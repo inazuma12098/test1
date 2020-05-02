@@ -223,9 +223,9 @@
                     </div>
                 </div>
                 <!-- End Swiper Wrapper -->
-<div class="swiper-pagination"></div>--小圓點分頁器
-            <div class="swiper-button-prev"></div>--上一頁
-            <div class="swiper-button-next"></div>--下一頁
+                <div class="swiper-pagination"></div>--小圓點分頁器
+                <div class="swiper-button-prev"></div>--上一頁
+                <div class="swiper-button-next"></div>--下一頁
             </div>
             <!-- End Swiper Clients -->
             
@@ -387,15 +387,20 @@
 }
 </style>
 
-<script> var mySwiper = new Swiper ('.swiper-container', { direction: 'vertical', 
-loop: true, 
-pagination: { el: '.swiper-pagination', }, 
-navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev', }, 
-scrollbar: { el: '.swiper-scrollbar', }, 
-}) 
-</script>
 
-
+<script>
+    var swiper = new Swiper('.swiper-container', {
+    pagination: '.swiper-pagination',//pagination分頁器
+    nextButton: '.swiper-button-next',//前進後退按鈕
+    prevButton: '.swiper-button-prev',
+    paginationClickable: true,//引數設定為true時，點選分頁器的指示點分頁器會控制Swiper切換
+    spaceBetween: 30,//slide之間的距離（單位px）。
+    centeredSlides: true,//設定為true時，活動塊會居中，而不是預設狀態下的居左。
+    loop : true,//複製多份迴圈(這裡就是讓輪播看起來是迴圈的，去掉這個就恢復了預設的swiper輪播)
+    autoplay: 3000,//自動切換的時間間隔（單位ms），不設定該引數slide不會自動切換。
+    autoplayDisableOnInteraction: false//點選後打斷auto-play
+    });
+    </script>
 </body>
     <!-- END BODY -->
 </html>
