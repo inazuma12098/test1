@@ -198,9 +198,9 @@
         <!-- nations -->
         
         <!-- Clients -->
-        <div class="swiper-container">
-           
-            
+        <div class="content-lg container">
+            <!-- Swiper Clients -->   
+            <div class="swiper-slider swiper-clients">
                 <!-- Swiper Wrapper -->
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -224,16 +224,13 @@
                 </div>
                 <!-- End Swiper Wrapper -->
              
+            </div>
+            <!-- End Swiper Clients -->
+            <div class="col-sm-12">
                 <div class="swiper-pagination"></div>
-
-                <!-- Navigation -->
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
-              
-                <!-- Scrollbar -->
-                <div class="swiper-scrollbar"></div>
-        
-            
+            </div>
             
         </div>
         <!-- End Clients -->
@@ -393,27 +390,30 @@
 }
 </style>
 
-
 <script>
-var mySwiper = new Swiper ('.swiper-container', {
 
-// Pagination
-pagination: {
-  el: '.swiper-pagination',
-},
+var mySwiper = new Swiper ('.banner_swiper', {
+        direction: 'horizontal',
+        // loop: true,
+        paginationClickable :true,
+        navigation: {
+            nextEl: '.banner_info .swiper-button-prev',
+            prevEl: '.banner_info .swiper-button-next',
+        },
+        pagination: {
+            el: '.banner_back_img .swiper-pagination',
+            clickable :true
+        },
+        speed:300,
+        // autoplay : true,
+        effect : 'slide',
+        // thumbs: {
+        //     swiper: galleryThumbs,
+        // },
+    })
 
-// Navigation
-navigation: {
-  nextEl: '.swiper-button-next',
-  prevEl: '.swiper-button-prev',
-},
-
-// Scrollbar
-scrollbar: {
-  el: '.swiper-scrollbar',
-},
-});
 </script>
+
 
 </body>
     <!-- END BODY -->
