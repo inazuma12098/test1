@@ -392,17 +392,24 @@
 
 
 <script>
-    
-var mySwiper = new Swiper(".swiper-container",{
-autoplay:1000,//每秒中輪播一次
-loop:true,//可以讓圖片迴圈輪播
-autoplayDisableOnInteraction:false,//在點選之後可以繼續實現輪播
-pagination:".swiper-pagination",//讓小圓點顯示
-paginationClickable:true,//實現小圓點點選
-prevButton:".swiper-button-prev",//實現上一頁的點選
-nextButton:".swiper-button-next",//實現下一頁的點選
-　　　　　　　　　　　　effect:"flip"//可以實現3D效果的輪播
-})
+var mySwiper = new Swiper ('.swiper-container', {
+
+// Pagination
+pagination: {
+  el: '.swiper-pagination',
+},
+
+// Navigation
+navigation: {
+  nextEl: '.swiper-button-next',
+  prevEl: '.swiper-button-prev',
+},
+
+// Scrollbar
+scrollbar: {
+  el: '.swiper-scrollbar',
+},
+});
 </script>
 
 </body>
