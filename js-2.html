@@ -25,6 +25,29 @@
         <link href="css/layout.min.css" rel="stylesheet" type="text/css"/>
         <link rel="shortcut icon" href="favicon.ico"/>
         <script>src="./swiper.min.js"</script>
+        <script>
+                
+            var mySwiper = new Swiper ('.banner_swiper', {
+                    direction: 'horizontal',
+                    // loop: true,
+                    paginationClickable :true,
+                    navigation: {
+                        nextEl: '.banner_info .swiper-button-prev',
+                        prevEl: '.banner_info .swiper-button-next',
+                    },
+                    pagination: {
+                        el: '.banner_back_img .swiper-pagination',
+                        clickable :true
+                    },
+                    speed:300,
+                    // autoplay : true,
+                    effect : 'slide',
+                    // thumbs: {
+                    //     swiper: galleryThumbs,
+                    // },
+                })
+            
+            </script>
     </head>
     <body id="body" data-spy="scroll" data-target=".header"></body>
           <header class="header navbar-fixed-top">
@@ -391,29 +414,7 @@
 }
 </style>
 
-<script>
 
-var mySwiper = new Swiper ('.banner_swiper', {
-        direction: 'horizontal',
-        // loop: true,
-        paginationClickable :true,
-        navigation: {
-            nextEl: '.banner_info .swiper-button-prev',
-            prevEl: '.banner_info .swiper-button-next',
-        },
-        pagination: {
-            el: '.banner_back_img .swiper-pagination',
-            clickable :true
-        },
-        speed:300,
-        // autoplay : true,
-        effect : 'slide',
-        // thumbs: {
-        //     swiper: galleryThumbs,
-        // },
-    })
-
-</script>
 
 
 </body>
