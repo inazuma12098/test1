@@ -159,7 +159,9 @@
                     var ax = a.x();
                     var ay = a.y();
 
-                    if (ax > ex - 20 && ax < ex + 20 && ay > ey - 20 && ay < ey + 20) {
+                    if (ax > ex - 25
+                     && ax < ex + 25
+                     && ay > ey - 25 && ay < ey + 25) {
                         return true;
                     } else {
                         return false;
@@ -221,6 +223,8 @@
                                     if (++score >= 5) {
                                         var text1 = '棒喔'
                                         drawBackground(background, images.beach, text1);
+                                        
+
                                     }
 
                                     // disable drag and drop
