@@ -1,224 +1,393 @@
 <!DOCTYPE html>
 
 <html lang="en" class="no-js">
-    <style>
-        body{
-        margin:0px;
-        padding:0px;
-        background:#fff url(https://i.imgur.com/n6xR6R6.png) center center fixed no-repeat;　//設定背景圖片的呈現方式
-        background-size: cover;　//設定背景圖片的填滿方式
-        }        
-        </style>
-    <head>
-        <meta charset="utf-8"/>
-        <title>りゅうおうR/C工房--遊戲頁面</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1" name="viewport"/>
-        <meta content="這是呂巍君的個人網站，裡面放了大學四年的作品" name="description"/>
-        <meta content="りゅうおう" name="author= ＲＹＵＯＵ"/>
-        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-        <link href="vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/animate.css" rel="stylesheet">
-        <link href="vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/layout.min.css" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" href="favicon.ico"/>
-    </head>
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+        background: #fff url(https://i.imgur.com/n6xR6R6.png) center center fixed no-repeat; //設定背景圖片的呈現方式
+        background-size: cover; //設定背景圖片的填滿方式
+    }
+</style>
 
-          <header class="header navbar-fixed-top">
-              <nav class="navbar bhg" role="navigation">
-                <div class="container">
-                      <div class="menu-container js_nav-item">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="toggle-icon"></span>
-                        </button>
+<head>
+    <script src="https://unpkg.com/konva@4.2.2/konva.min.js"></script>
+    <meta charset="utf-8" />
+    <title>りゅうおうR/C工房--遊戲頁面</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="這是呂巍君的個人網站，裡面放了大學四年的作品" name="description" />
+    <meta content="りゅうおう" name="author= ＲＹＵＯＵ" />
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
 
-                          <div class="logo">
-                            <a class="logo-wrap" href="index.html">
-                                <img class="logo-img logo-img-main" src="https://i.imgur.com/hutbPX8.png" alt="FlameOnePage Logo">
-                                <img class="logo-img logo-img-active" src="https://i.imgur.com/mTzJPwY.png" alt="FlameOnePage Dark Logo">
-                            </a>
-                        </div>
+<header class="header navbar-fixed-top">
+    <nav class="navbar bhg" role="navigation">
+        <div class="container">
+            <div class="menu-container js_nav-item">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="toggle-icon"></span>
+                </button>
 
-                    </div>
-                    
+                <div class="logo">
+                    <a class="logo-wrap" href="index.html">
+                        <img class="logo-img logo-img-main" src="https://i.imgur.com/hutbPX8.png"
+                            alt="FlameOnePage Logo">
+                        <img class="logo-img logo-img-active" src="https://i.imgur.com/mTzJPwY.png"
+                            alt="FlameOnePage Dark Logo">
+                    </a>
+                </div>
 
-                    <div class="collapse navbar-collapse nav-collapse">
-					
-					<!--div class="language-switcher">
+            </div>
+
+
+            <div class="collapse navbar-collapse nav-collapse">
+
+                <!--div class="language-switcher">
 					  <ul class="nav-lang">
                         <li><a class="active" href="#">EN</a></li>
 					    <li><a href="#">DE</a></li>
 						<li><a href="#">FR</a></li>
                       </ul>
                       <li class="footer-list-item"><a href="https://twitter.com/RYUOU12098"target="_blank" >Twitter</a></li>
-					</div---> 
-					
-                        <div class="menu-container">
-                            <ul class="nav navbar-nav navbar-nav-right">
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="experience.html">網頁學習心得</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="about.html">作者介紹</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="works.html">作品一覽</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="video.html">作品影片</a></li>
-								<li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#contact">聯絡</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-			</header>
-       
-          
+					</div--->
 
-      
-            <div class="content-lg container bgoo">
-                <div class="row margin-b-40 bgo">
-                    <div class="col-sm-6">
-                        <h2>小遊戲--將相同形狀的圖片移到位置上</h2>
-                        <p></p>
-                    </div>
-                </div>
-                <!--// end row -->
-                <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-12">
-                    <div class="margin:auto">
-                        
-                    </div>
-                    
-                </div>
-               
-                
-            </div>
-           
-            
-                    
-                    
-
-            
-       
-            
-            
-           
-        <!--========== END PAGE LAYOUT ==========-->
-        <div id="contact">
-        <!--========== FOOTER ==========-->
-        <footer class="footer" style="background-color:rgb(255, 255, 255);opacity:0.8;">
-            <!-- Links -->
-            <div class="section-seperator">
-                <div class="content-md container">
-                    <div class="row">
-                        <div class="col-sm-2 sm-margin-b-30">
-                            <!-- List -->
-                            <ul class="list-unstyled footer-list">
-                                <li class="footer-list-item"><a href="about.html">介紹</a></li>
-                                <li class="footer-list-item"><a href="video.html">影片</a></li>
-                                <li class="footer-list-item"><a href="works.html">作品</a></li>
-                            </ul>
-                            <!-- End List -->
-                        </div>
-                        <div class="col-sm-2 sm-margin-b-30">
-                            <!-- List -->
-                            <ul class="list-unstyled footer-list">
-                                <li class="footer-list-item"><a href="https://twitter.com/RYUOU12098"target="_blank" >Twitter</a></li>
-                                <li class="footer-list-item"><a href="https://home.gamer.com.tw/homeindex.php?owner=inazuma106"target="_blank" >巴哈姆特小屋</a></li>
-                                <li class="footer-list-item"><a href="https://t.co/aQ4m3MbGAe?amp=1"target="_blank" >YouTube</a></li>
-                            </ul>
-                            <!-- End List -->
-                        </div>
-                        <div class="col-sm-2 sm-margin-b-30">
-                           
-                        </div>
-                        <div class="col-sm-2 sm-margin-b-30">
-                           
-                        </div>
-                        <div class="col-sm-2 sm-margin-b-30">
-                            <!-- List -->
-                           
-                        </div>
-                        <div class="col-sm-2 sm-margin-b-30">
-                            <!-- List -->
-                            <img class="img-responsive" src="https://i.imgur.com/x7acpSz.png" alt="Latest Products Image">
-                            <!-- End List -->
-                        </div>
-                        
-                    </div>
-                    <!--// end row -->
+                <div class="menu-container">
+                    <ul class="nav navbar-nav navbar-nav-right">
+                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
+                                href="experience.html">網頁學習心得</a></li>
+                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
+                                href="about.html">作者介紹</a></li>
+                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
+                                href="works.html">作品一覽</a></li>
+                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover"
+                                href="video.html">作品影片</a></li>
+                        <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#contact">聯絡</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <!-- End Links -->
+        </div>
+    </nav>
+</header>
 
-            <!-- Copyright -->
-            <div class="content container">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <img class="footer-logo" src="https://i.imgur.com/gMNRTAW.png" alt="RYUOU Logo">
-                    </div>
-                    <div class="col-xs-6 text-right">
-                        <p class="margin-b-0"><a class="fweight-700" ></a>  by: <a class="fweight-700" >RYUOU Studio</a></p>
-                    </div>
+
+
+
+<div class="content-lg container bgoo">
+    <div class="row margin-b-40 bgo">
+        <div class="col-sm-6">
+            <h2>小遊戲--將相同形狀的圖片移到位置上</h2>
+            <p></p>
+        </div>
+    </div>
+    <!--// end row -->
+    <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-12">
+        <div class="margin:auto">
+            <div id="container"></div>
+            <div class="row ">
+                <div class="col-sm-12 ">
+                    <script>
+                        var bkimage = "beach"
+                        var animals = ["monkey", "lion", "giraffe", "snake", "panzer"]
+                        var paths = {
+                            monkey: { sx: 275, sy: 70, ex: 300, ey: 420 },
+                            lion: { sx: 400, sy: 70, ex: 100, ey: 390 },
+                            giraffe: { sx: 90, sy: 70, ex: 390, ey: 250 },
+                            snake: { sx: 10, sy: 70, ex: 275, ey: 350 },
+                            panzer: { sx: 300, sy: 250, ex: 10, ey: 350 },
+                        }
+                        var loadedImages = 0;
+
+                        loadImages(bkimage, animals, initStage)
+
+                        function loadImages(bgimg, fgimgs, callback) {
+                            var assetDir = 'assets/';
+                            var variants = ["", "_black", "_glow"];
+                            var images = {};
+                            var sources = [bgimg]
+                            for (var i = 0; i < fgimgs.length; i++) {
+                                for (var j = 0; j < variants.length; j++) {
+                                    sources.push(fgimgs[i] + variants[j])
+                                }
+                            }
+                            var numImages = sources.length;
+                            for (var i = 0; i < sources.length; i++) {
+                                var src = sources[i]
+                                images[src] = new Image();
+                                images[src].src = assetDir + src + ".png";
+                                images[src].onload = function () {
+                                    if (++loadedImages >= numImages) {
+                                        callback(images);
+                                    }
+                                };
+                            }
+                        }
+
+                        function drawBackground(background, bgImg, text) {
+                            var context = background.getContext();
+                            context.drawImage(bgImg, 500, 0);   //背景圖片座標
+                            context.setAttr('font', '20pt Calibri');
+                            context.setAttr('textAlign', 'center');
+                            context.setAttr('fillStyle', 'white');
+                            context.fillText(text, background.getStage().width() / 2, 40);
+                        }
+
+                        function isNearOutline(animal, ex, ey) {
+                            var a = animal;
+                            var ax = a.x();
+                            var ay = a.y();
+
+                            if (ax > ex - 20 && ax < ex + 20 && ay > ey - 20 && ay < ey + 20) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+
+                        function initStage(images) {
+                            var score = 0;
+                            var stage = new Konva.Stage({
+                                container: 'container',
+                                width: 578,                 //遊戲頁框大小
+                                height: 530
+                            });
+                            var background = new Konva.Layer();
+                            var animalLayer = new Konva.Layer();
+
+                            for (var key in paths) { // key = monkey, lion, ...
+                                var setAnimal = function () {
+                                    var animal = new Konva.Image({
+                                        image: images[key],
+                                        x: paths[key].sx,                 //物件位置放置程式
+                                        y: paths[key].sy,
+                                        draggable: true
+                                    });
+                                    var privKey = key
+                                    // make animal glow on mouseover
+                                    animal.on('mouseover', function () {
+                                        animal.image(images[privKey + '_glow']);
+                                        animalLayer.draw();
+                                        document.body.style.cursor = 'pointer';
+                                    });
+                                    // return animal on mouseout
+                                    animal.on('mouseout', function () {
+                                        animal.image(images[privKey]);
+                                        animalLayer.draw();
+                                        document.body.style.cursor = 'default';
+                                    });
+                                    animal.on('dragstart', function () {
+                                        this.moveToTop();
+                                        animalLayer.draw();
+                                    });
+                                    animal.on('dragmove', function () {
+                                        document.body.style.cursor = 'pointer';
+                                    });
+                                    /*
+                                     * check if animal is in the right spot and
+                                     * snap into place if it is
+                                     */
+                                    animal.on('dragend', function () {
+                                        var home = paths[privKey]
+                                        if (!animal.inRightPlace && isNearOutline(animal, home.ex, home.ey)) {
+                                            animal.position({
+                                                x: home.ex,
+                                                y: home.ey
+                                            });
+                                            animalLayer.draw();
+                                            animal.inRightPlace = true;
+
+                                            if (++score >= 5) {
+                                                var text = '你找到所有圖片了';
+                                                drawBackground(background, images.beach, text);
+                                            }
+
+                                            // disable drag and drop
+                                            setTimeout(function () {
+                                                animal.draggable(false);
+                                            }, 50);
+                                        }
+                                    });
+                                    animalLayer.add(animal);
+                                }
+                                setAnimal()
+
+                                var setAnimalHome = function () {
+                                    var animal = new Konva.Image({
+                                        image: images[key + "_black"],
+                                        x: paths[key].ex,
+                                        y: paths[key].ey,
+                                    });
+                                    animalLayer.add(animal);
+                                }
+                                setAnimalHome()
+                            }
+
+                            stage.add(background);
+                            stage.add(animalLayer);
+
+                            drawBackground(
+                                background,
+                                images[bkimage],
+                                '將相同形狀的圖片拖曳到位置上'
+                            );
+                        }
+
+                    </script>
                 </div>
-                <!--// end row -->
             </div>
-
-            <!-- End Copyright -->
-        
-        </footer>
         </div>
 
-        <!--========== END FOOTER ==========-->
+    </div>
 
-        <!-- Back To Top -->
-        <a href="javascript:void(0);" class="js-back-to-top back-to-top">TOP</a>
 
-        <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-        <!-- CORE PLUGINS -->
-        <script src="vendor/jquery.min.js" type="text/javascript"></script>
-        <script src="vendor/jquery-migrate.min.js" type="text/javascript"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+</div>
 
-        <!-- PAGE LEVEL PLUGINS -->
-        <script src="vendor/jquery.easing.js" type="text/javascript"></script>
-        <script src="vendor/jquery.back-to-top.js" type="text/javascript"></script>
-        <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script>
-        <script src="vendor/jquery.wow.min.js" type="text/javascript"></script>
-        <script src="vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
-        <script src="vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
-        <script src="vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
 
-        <!-- PAGE LEVEL SCRIPTS -->
-        <script src="js/layout.min.js" type="text/javascript"></script>
-        <script src="js/components/wow.min.js" type="text/javascript"></script>
-        <script src="js/components/swiper.min.js" type="text/javascript"></script>
-        <script src="js/components/masonry.min.js" type="text/javascript"></script>
-        
-        <style>
-            .square {
-	        width: 235px;
-	        border-radius: 50%;
-	        border: 1px solid rgba(255,255,255,0.8);
-            }
-        </style>
-         <style>
-            .bgo{
-                background: rgba(204, 203, 203, 0.6);margin-bottom: 10px;
-            }
-        </style>
-        <style>
-            .bgoo{
-                background: rgba(255, 255, 255, 0.473);margin-bottom: 10px;
-            }
-        </style>
-        <style>
-            .bhg{
-                background: rgba(15, 15, 12, 0.6);margin-bottom: 10px;
-            }
-        </style>
-        <style>
-            .bh1{
-                background: rgba(15, 15, 12, 0.0);margin-bottom: 10px;
-            }
-        </style>
-    </body>
-    <!-- END BODY -->
+
+
+
+
+
+
+
+
+<!--========== END PAGE LAYOUT ==========-->
+<div id="contact">
+    <!--========== FOOTER ==========-->
+    <footer class="footer" style="background-color:rgb(255, 255, 255);opacity:0.8;">
+        <!-- Links -->
+        <div class="section-seperator">
+            <div class="content-md container">
+                <div class="row">
+                    <div class="col-sm-2 sm-margin-b-30">
+                        <!-- List -->
+                        <ul class="list-unstyled footer-list">
+                            <li class="footer-list-item"><a href="about.html">介紹</a></li>
+                            <li class="footer-list-item"><a href="video.html">影片</a></li>
+                            <li class="footer-list-item"><a href="works.html">作品</a></li>
+                        </ul>
+                        <!-- End List -->
+                    </div>
+                    <div class="col-sm-2 sm-margin-b-30">
+                        <!-- List -->
+                        <ul class="list-unstyled footer-list">
+                            <li class="footer-list-item"><a href="https://twitter.com/RYUOU12098"
+                                    target="_blank">Twitter</a></li>
+                            <li class="footer-list-item"><a
+                                    href="https://home.gamer.com.tw/homeindex.php?owner=inazuma106"
+                                    target="_blank">巴哈姆特小屋</a></li>
+                            <li class="footer-list-item"><a href="https://t.co/aQ4m3MbGAe?amp=1"
+                                    target="_blank">YouTube</a></li>
+                        </ul>
+                        <!-- End List -->
+                    </div>
+                    <div class="col-sm-2 sm-margin-b-30">
+
+                    </div>
+                    <div class="col-sm-2 sm-margin-b-30">
+
+                    </div>
+                    <div class="col-sm-2 sm-margin-b-30">
+                        <!-- List -->
+
+                    </div>
+                    <div class="col-sm-2 sm-margin-b-30">
+                        <!-- List -->
+                        <img class="img-responsive" src="https://i.imgur.com/x7acpSz.png" alt="Latest Products Image">
+                        <!-- End List -->
+                    </div>
+
+                </div>
+                <!--// end row -->
+            </div>
+        </div>
+        <!-- End Links -->
+
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <img class="footer-logo" src="https://i.imgur.com/gMNRTAW.png" alt="RYUOU Logo">
+                </div>
+                <div class="col-xs-6 text-right">
+                    <p class="margin-b-0"><a class="fweight-700"></a> by: <a class="fweight-700">RYUOU Studio</a></p>
+                </div>
+            </div>
+            <!--// end row -->
+        </div>
+
+        <!-- End Copyright -->
+
+    </footer>
+</div>
+
+<!--========== END FOOTER ==========-->
+
+<!-- Back To Top -->
+<a href="javascript:void(0);" class="js-back-to-top back-to-top">TOP</a>
+
+<!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- CORE PLUGINS -->
+<script src="vendor/jquery.min.js" type="text/javascript"></script>
+<script src="vendor/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!-- PAGE LEVEL PLUGINS -->
+<script src="vendor/jquery.easing.js" type="text/javascript"></script>
+<script src="vendor/jquery.back-to-top.js" type="text/javascript"></script>
+<script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script>
+<script src="vendor/jquery.wow.min.js" type="text/javascript"></script>
+<script src="vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+<script src="vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+<script src="vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+
+<!-- PAGE LEVEL SCRIPTS -->
+<script src="js/layout.min.js" type="text/javascript"></script>
+<script src="js/components/wow.min.js" type="text/javascript"></script>
+<script src="js/components/swiper.min.js" type="text/javascript"></script>
+<script src="js/components/masonry.min.js" type="text/javascript"></script>
+
+<style>
+    .square {
+        width: 235px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+</style>
+<style>
+    .bgo {
+        background: rgba(204, 203, 203, 0.6);
+        margin-bottom: 10px;
+    }
+</style>
+<style>
+    .bgoo {
+        background: rgba(255, 255, 255, 0.473);
+        margin-bottom: 10px;
+    }
+</style>
+<style>
+    .bhg {
+        background: rgba(15, 15, 12, 0.6);
+        margin-bottom: 10px;
+    }
+</style>
+<style>
+    .bh1 {
+        background: rgba(15, 15, 12, 0.0);
+        margin-bottom: 10px;
+    }
+</style>
+</body>
+<!-- END BODY -->
+
 </html>
