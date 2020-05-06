@@ -1,441 +1,498 @@
 <!DOCTYPE html>
 
 <html lang="en" class="no-js">
-    <style>
-        body{
-        margin:0px;
-        padding:0px;
-        background:#fff url(https://i.imgur.com/n6xR6R6.png) center center fixed no-repeat;　//設定背景圖片的呈現方式
-        background-size: cover;　//設定背景圖片的填滿方式
-        }        
-        </style>
-    <head>
-        <meta charset="utf-8"/>
-        <title>りゅうおうR/C工房　BT-42改造</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1" name="viewport"/>
-        <meta content="這是1/35 BT-42改造" name="description"/>
-        <meta content="りゅうおう" name="author= ＲＹＵＯＵ"/>
-        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-        <link href="vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/animate.css" rel="stylesheet">
-        <link href="vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css"/>
-        <link href="css/layout.min.css" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" href="favicon.ico"/>
-        <script>src="./swiper.min.js"</script>
-        <script>
-                
-            var mySwiper = new Swiper ('.banner_swiper', {
-                    direction: 'horizontal',
-                    // loop: true,
-                    paginationClickable :true,
-                    
-                    navigation: {
-                        nextEl: '.banner_info .swiper-button-prev',
-                        prevEl: '.banner_info .swiper-button-next',
-                    },
-                    pagination: {
-                        el: '.banner_back_img .swiper-pagination',
-                        clickable :true
-                    },
-                    speed:300,
-                    // autoplay : true,
-                    effect : 'slide',
-                    // thumbs: {
-                    //     swiper: galleryThumbs,
-                    // },
-                })
-            
-            </script>
-    </head>
-    <body id="body" data-spy="scroll" data-target=".header"></body>
-          <header class="header navbar-fixed-top">
-              <nav class="navbar bhg" role="navigation">
-                <div class="container">
-                      <div class="menu-container js_nav-item">
-                       
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+        background: #fff url(https://i.imgur.com/n6xR6R6.png) center center fixed no-repeat; //設定背景圖片的呈現方式
+        background-size: cover; //設定背景圖片的填滿方式
+    }
+</style>
 
-                          <div class="logo">
-                            <a class="logo-wrap" href="index.html">
-                                <img class="logo-img logo-img-main" src="https://i.imgur.com/hutbPX8.png" alt="RYUOU Logo">
-                                <img class="logo-img logo-img-active" src="https://i.imgur.com/mTzJPwY.png" alt="RYUOU Dark Logo">
-                            </a>
-                        </div>
+<head>
+    <meta charset="utf-8" />
+    <title>りゅうおうR/C工房　BT-42改造</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="這是1/35 BT-42改造" name="description" />
+    <meta content="りゅうおう" name="author= ＲＹＵＯＵ" />
+    <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="vendor/swiper/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <script>src = "./swiper.min.js"</script>
+    <script>
 
-                    </div>
-                    
+        var mySwiper = new Swiper('.banner_swiper', {
+            direction: 'horizontal',
+            // loop: true,
+            paginationClickable: true,
 
-                    <div class="collapse navbar-collapse nav-collapse">
-					
-					<!--div class="language-switcher">
+            navigation: {
+                nextEl: '.banner_info .swiper-button-prev',
+                prevEl: '.banner_info .swiper-button-next',
+            },
+            pagination: {
+                el: '.banner_back_img .swiper-pagination',
+                clickable: true
+            },
+            speed: 300,
+            // autoplay : true,
+            effect: 'slide',
+            // thumbs: {
+            //     swiper: galleryThumbs,
+            // },
+        })
+
+    </script>
+</head>
+
+<body id="body" data-spy="scroll" data-target=".header"></body>
+<header class="header navbar-fixed-top">
+    <nav class="navbar bhg" role="navigation">
+        <div class="container">
+            <div class="menu-container js_nav-item">
+
+
+                <div class="logo">
+                    <a class="logo-wrap" href="index.html">
+                        <img class="logo-img logo-img-main" src="https://i.imgur.com/hutbPX8.png" alt="RYUOU Logo">
+                        <img class="logo-img logo-img-active" src="https://i.imgur.com/mTzJPwY.png"
+                            alt="RYUOU Dark Logo">
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="collapse navbar-collapse nav-collapse">
+
+                <!--div class="language-switcher">
 					  <ul class="nav-lang">
                         <li><a class="active" href="#">EN</a></li>
 					    <li><a href="#">DE</a></li>
 						<li><a href="#">FR</a></li>
                       </ul>
                       <li class="footer-list-item"><a href="https://twitter.com/RYUOU12098"target="_blank" >Twitter</a></li>
-					</div---> 
-					
-                        <div class="menu-container">
-                            <ul class="nav navbar-nav navbar-nav-right">
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="experience.html">網頁學習心得</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="about.html">作者介紹</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="works.html">作品一覽</a></li>
-                                <li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="video.html">作品影片</a></li>
-								<li class="js_nav-item nav-item"><a class="nav-item-child nav-item-hover" href="#contact">聯絡</a></li>
-                            </ul>
-                        </div>
-                    </div>
+					</div--->
+
+                <div class="menu-container">
+                    <ul class="nav navbar-nav navbar-nav-right">
+                        <li class="js_nav-item nav-item">
+                            <a class="nav-item-child nav-item-hover" href="experience.html">網頁學習心得</a>
+                        </li>
+                        <li class="js_nav-item nav-item">
+                            <a class="nav-item-child nav-item-hover" href="networks.html">學習成品列表</a>
+                        </li>
+                        <li class="js_nav-item nav-item">
+                            <a class="nav-item-child nav-item-hover" href="about.html">作者介紹</a>
+                        </li>
+                        <li class="js_nav-item nav-item">
+                            <a class="nav-item-child nav-item-hover" href="works.html">作品一覽</a>
+                        </li>
+                        <li class="js_nav-item nav-item">
+                            <a class="nav-item-child nav-item-hover" href="video.html">作品影片</a>
+                        </li>
+                        <li class="js_nav-item nav-item">
+                            <a class="nav-item-child nav-item-hover" href="#contact">聯絡</a>
+                        </li>
+
+                    </ul>
                 </div>
-            </nav>
-			</header>
-       
-       
-
-        <!--========== PAGE LAYOUT ==========-->
-            
-        <!-- Latest Products -->
-        <div id="products">
-            <div class="content-lg container">
-                <div class="row  col-sm-12 bhg2">
-                    <div class="col-sm-6">
-                        <h2 class="col-md-12" style="text-align:center;"><br>作品＆簡介</h2>
-                        
-                    </div>
-                </div>
-                <!--// end row -->
-
-                <div class="col-sm-12 row bhg1">
-                    <!-- Latest Products -->
-                    <div class="col-sm-2 sm-margin-b-50 ">
-                        <div class="margin-b-20">
-                        </div>
-                    </div>
-                    <!-- End Latest Products -->
-
-                    <!-- Latest Products -->
-                        <div class="col-sm-8 sm-margin-b-50">
-                            <br>
-                            <h2>BT-42 RC改造計畫<span class="text-uppercase  margin-l-20">比例1/35</span></h2>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/3P0Pzks.jpg" alt="bt-1">
-                               
-                                <h3> <br>這次帶來的作品為芬蘭在二次大戰期間，利用從蘇聯繳獲的BT-7戰車的車體，搭配英國QF4.5inch主砲，所製造而成的BT-42突擊砲，擁有BT系列不需履帶仍能夠行走的特性。</h3>
- 
-                                <h3> <br>這次所製作的塗裝，是少女與戰車中代表芬蘭的繼續高校塗裝了。在劇場版中單輛在敵陣裡的機動實在太吸引人了呢。</h3>
-                                <h3> <br>所以這次所製作的目標就是還原可以裝履帶行走以及履帶沒了也能像一般裝甲車一樣行走的機動力！</h3>
-                                
-                               
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/RQg48gS.jpg" alt="bt-2">
-            
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/vBBBvAb.jpg" alt="bt-3">
-                                
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/gxXMQLR.jpg" alt="bt-4">
-
-                                
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/f9TfC0W.jpg" alt="bt-5">
-                                
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/Bb0vmVW.jpg" alt="bt-6">
-
-                                <h3 class="col-md-12"><br>▼為了做出轉向機構，捨棄掉了第一對負重輪的懸吊，同時保有懸吊和轉向在這個比例太困難了</h3>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/ipxBdf2.jpg" alt="cc-7">
-                               
-                                <h3 class="col-md-12"><br>▼拿掉履帶</h3>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/7cbecvO.jpg" alt="bt-8">
-                               
-                                <h3 class="col-md-12"><br>▼驅動的齒輪外露應該算是這次最大的敗筆</h3>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/fdtkwQE.jpg" alt="bt-9">
-
-                                
-                                <h3 class="col-md-12"><br>▼後部驅動輪的漆不知為何附著力有點差，掉漆倒是很真實就是。</h3>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/QLq97IB.jpg" alt="bt-10">
-
-                                <h3 class="col-md-12"><br>▼製作過程濃縮以及功能展示</h3>
-                                <div class="col-md-12 margin-b-40" style="position: relative; height: 0; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/7_uCMNtY22I"  width="100%" height="450" style="position: absolute; width: 100%; height: 100%; left: 0;" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-                                </div>
-
-
-                                <p><hr size="8px" color="black" align="center" width="100%"></p>
-                                <h3 class="col-md-12 margin-b-40" style="text-align:center;"><br>▼以下為製作過程▼</h3>
-
-                                <h3 class="col-md-12"><br>▼車體並不是一體成型，同時很小，一開始就得考慮配置。</h3>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/3c8PEkU.jpg" alt="bt-11">
-
-                                <h3 class="col-md-12"><br>▼懸吊可能不會很明顯，但還是以彈簧試著還原克莉絲蒂懸吊</h3>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/PwFNe4s.jpg" alt="bt-12">
-                                
-                                <h3 class="col-md-12"><br>▼驅動輪部分以四驅車齒輪連動，無法和實車一樣方式實在有點可惜</h3>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/bmMurwP.jpg" alt="bt-13">
-
-                                <h3 class="col-md-12"><br>▼內側以皇冠齒輪來減速，由於是緊配，可以利用軸帶動外側的齒輪</h3>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/MBMOxvr.jpg" alt="bt-14">
-
-                                <h3 class="col-md-12"><br>▼利用銅棒連接轉向臂測試動作</h3>
-                                <div class="col-md-12 margin-b-40" style="position: relative; height: 0; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/fjkHSFlGHyM"  width="100%" height="450" style="position: absolute; width: 100%; height: 100%; left: 0;" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-                                </div>
-
-                                <h3 class="col-md-12"><br>▼車身這次的配置就差不多這樣，只打算做行走</h3>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/1CPyOxz.jpg" alt="bt-15">
-
-                                <h3 class="col-md-12"><br>▼上電測試行走順暢度 無履帶</h3>
-                                <div class="col-md-12 margin-b-40" style="position: relative; height: 0; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/__DIxxfXKDc"  width="100%" height="450" style="position: absolute; width: 100%; height: 100%; left: 0;" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-                                </div>
-
-                                <h3 class="col-md-12"><br>▼上電測試行走順暢度 有履帶</h3>
-                                <div class="col-md-12 margin-b-40" style="position: relative; height: 0; padding-bottom: 56.25%;"><iframe src="https://www.youtube.com/embed/xngABfma6CM"  width="100%" height="450" style="position: absolute; width: 100%; height: 100%; left: 0;" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-                                </div>
-
-                                <h3 class="col-md-12"><br>▼調整好後就能塗裝了</h3>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/hsbFGst.jpg" alt="bt-16">
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/6fm8fgh.jpg" alt="bt-17">
-
-                                <h3 class="col-md-12"><br>▼貼上水貼，由於必須刺破，所以也得補色</h3>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/k6apjj7.jpg" alt="bt-18">
-
-                            
-                                <h3 class="col-md-12"><br>▼完成</h3>
-                                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/luQnHrB.jpg" alt="bt-19">
-
-                                <h3> <br>這台的難點主要是車身小，在馬達減速齒輪的部分要減小體積。而前方如同汽車的轉向裝置，塑膠的強度有點讓人擔心，輪軸上轉向部分最好用銅管補強。</h3>
-                                <h3> <br></h3>
-                                
-                             </div>
-                                                     
-                                
-                        </div>
-                    <!-- End Latest Products -->
-
-                   
-                </div>
-                <!--// end row -->
             </div>
         </div>
-        <!-- End Latest works -->
-            
+    </nav>
+</header>
 
-     <div id="links">
-        <div class="content-lg container">
-            <div class="row bhg1">     
-                <!-- Clients -->
-                <div class="content-lg container col-md-12" >
-                        <!-- Swiper Clients -->   
-                        <a class="col-sm-12"><h2>相關改造<span class="text-uppercase margin-l-20" style="color: rgb(58, 58, 58);" >左右滑動以檢視更多</span></h2></a>
-                             <div class="swiper-slider swiper-clients col-md-12">
-                             <!-- Swiper Wrapper -->
-                                <div class="swiper-wrapper bgh1">
-                                    <div class="swiper-slide">
-                                        <a href="js-2.html"><img class="swiper-clients-img "  src="https://i.imgur.com/dmjf38C.jpg" alt="JS-2"></a>
-                                    </div>
 
-                                     <div class="swiper-slide">
-                                        <a href="zero.html"><img class="swiper-clients-img "  src="https://i.imgur.com/Dk0hYQo.jpg" alt="ZERO"></a>
-                                    </div>
 
-                                    <div class="swiper-slide">
-                                        <a href="churchill.html"><img class="swiper-clients-img" src="https://i.imgur.com/28NEQb5.jpg" alt="CHURCHILL"></a>
-                                    </div>
+<!--========== PAGE LAYOUT ==========-->
 
-                                    <div class="swiper-slide">
-                                        <a href="bt-42.html"> <img class="swiper-clients-img" src="https://i.imgur.com/ToMALrb.jpg" alt="BT-42"></a>
-                                    </div>
+<!-- Latest Products -->
+<div id="products">
+    <div class="content-lg container">
+        <div class="row  col-sm-12 bhg2">
+            <div class="col-sm-6">
+                <h2 class="col-md-12" style="text-align:center;"><br>作品＆簡介</h2>
 
-                                    <div class="swiper-slide">
-                                        <a href="type10.html"><img class="swiper-clients-img" src="https://i.imgur.com/kqHCh7a.jpg" alt="TYPE-10"></a>
-                                    </div>
-
-                                    <div class="swiper-slide">
-                                        <a href="pershing.html"><img class="swiper-clients-img" src="https://i.imgur.com/D2dAnkE.jpg" alt="PERSHING"></a>
-                                    </div>
-
-                                    <div class="swiper-slide">
-                                        <a href="kingtiger.html"><img class="swiper-clients-img" src="https://i.imgur.com/eQhgnIc.jpg" alt="KINGTIGER"></a>
-                                    </div>
-                                    
-                                    <div class="swiper-slide">
-                                        <a href="yamato.html"><img class="swiper-clients-img "  src="https://i.imgur.com/S7nldmh.jpg" alt="YAMATO"></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href="cv33.html"><img class="swiper-clients-img "  src="https://i.imgur.com/z3yhqqt.jpg" alt="CV33"></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href="tirpitz.html"><img class="swiper-clients-img "  src="https://i.imgur.com/JcYeShe.jpg" alt="Tirpitz"></a>
-                                    </div>
-                                    
-                                </div>
-                                <!-- End Swiper Wrapper -->
-                                <a class="row col-sm-12"><br></a>
-                                <a class="col-sm-2"></a>
-                                <a class="col-sm-2"></a>
-                                <a class="col-sm-2"></a>
-                                <a class="col-sm-2"></a>
-                                <a class="col-sm-2"></a>
-                                <a class="col-sm-2 "href="works.html"><h3 style="color: rgb(77, 77, 77);" >往作品一覽>></h3></a>
-                             </div>
-                  <!-- End Swiper Clients -->
-
-                  
-                 </div>          
             </div>
-            <!-- End Clients -->
         </div>
-            
-    </div>   
-            
-           
-        <!--========== END PAGE LAYOUT ==========-->
-        <div id="contact">
-        <!--========== FOOTER ==========-->
-        <footer class="footer" style="background-color:rgb(255, 255, 255);opacity:0.8;">
-            <!-- Links -->
-            <div class="section-seperator">
-                <div class="content-md container">
-                    <div class="row">
-                        <div class="col-sm-2 sm-margin-b-30">
-                            <!-- List -->
-                            <ul class="list-unstyled footer-list">
-                                <li class="footer-list-item"><a href="about.html">介紹</a></li>
-                                <li class="footer-list-item"><a href="video.html">影片</a></li>
-                                <li class="footer-list-item"><a href="works.html">作品</a></li>
-                            </ul>
-                            <!-- End List -->
-                        </div>
-                        <div class="col-sm-2 sm-margin-b-30">
-                            <!-- List -->
-                            <ul class="list-unstyled footer-list">
-                                <li class="footer-list-item"><a href="https://twitter.com/RYUOU12098"target="_blank" >Twitter</a></li>
-                                <li class="footer-list-item"><a href="https://home.gamer.com.tw/homeindex.php?owner=inazuma106"target="_blank" >巴哈姆特小屋</a></li>
-                                <li class="footer-list-item"><a href="https://t.co/aQ4m3MbGAe?amp=1"target="_blank" >YouTube</a></li>
-                            </ul>
-                            <!-- End List -->
-                        </div>
-                        <div class="col-sm-2 sm-margin-b-30">
-                           
-                        </div>
-                        <div class="col-sm-2 sm-margin-b-30">
-                           
-                        </div>
-                        <div class="col-sm-2 sm-margin-b-30">
-                            <!-- List -->
-                           
-                        </div>
-                        <div class="col-sm-2 sm-margin-b-30">
-                            <!-- List -->
-                            <img class="img-responsive" src="https://i.imgur.com/x7acpSz.png" alt="Latest Products Image">
-                            <!-- End List -->
-                        </div>
-                    </div>
-                    <!--// end row -->
+        <!--// end row -->
+
+        <div class="col-sm-12 row bhg1">
+            <!-- Latest Products -->
+            <div class="col-sm-2 sm-margin-b-50 ">
+                <div class="margin-b-20">
                 </div>
             </div>
-            <!-- End Links -->
+            <!-- End Latest Products -->
 
-            <!-- Copyright -->
-            <div class="content container">
+            <!-- Latest Products -->
+            <div class="col-sm-8 sm-margin-b-50">
+                <br>
+                <h2>BT-42 RC改造計畫<span class="text-uppercase  margin-l-20">比例1/35</span></h2>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/3P0Pzks.jpg" alt="bt-1">
+
+                <h3> <br>這次帶來的作品為芬蘭在二次大戰期間，利用從蘇聯繳獲的BT-7戰車的車體，搭配英國QF4.5inch主砲，所製造而成的BT-42突擊砲，擁有BT系列不需履帶仍能夠行走的特性。</h3>
+
+                <h3> <br>這次所製作的塗裝，是少女與戰車中代表芬蘭的繼續高校塗裝了。在劇場版中單輛在敵陣裡的機動實在太吸引人了呢。</h3>
+                <h3> <br>所以這次所製作的目標就是還原可以裝履帶行走以及履帶沒了也能像一般裝甲車一樣行走的機動力！</h3>
+
+
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/RQg48gS.jpg" alt="bt-2">
+
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/vBBBvAb.jpg" alt="bt-3">
+
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/gxXMQLR.jpg" alt="bt-4">
+
+
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/f9TfC0W.jpg" alt="bt-5">
+
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/Bb0vmVW.jpg" alt="bt-6">
+
+                <h3 class="col-md-12"><br>▼為了做出轉向機構，捨棄掉了第一對負重輪的懸吊，同時保有懸吊和轉向在這個比例太困難了</h3>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/ipxBdf2.jpg" alt="cc-7">
+
+                <h3 class="col-md-12"><br>▼拿掉履帶</h3>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/7cbecvO.jpg" alt="bt-8">
+
+                <h3 class="col-md-12"><br>▼驅動的齒輪外露應該算是這次最大的敗筆</h3>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/fdtkwQE.jpg" alt="bt-9">
+
+
+                <h3 class="col-md-12"><br>▼後部驅動輪的漆不知為何附著力有點差，掉漆倒是很真實就是。</h3>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/QLq97IB.jpg" alt="bt-10">
+
+                <h3 class="col-md-12"><br>▼製作過程濃縮以及功能展示</h3>
+                <div class="col-md-12 margin-b-40" style="position: relative; height: 0; padding-bottom: 56.25%;">
+                    <iframe src="https://www.youtube.com/embed/7_uCMNtY22I" width="100%" height="450"
+                        style="position: absolute; width: 100%; height: 100%; left: 0;" frameborder="0"
+                        allowfullscreen="allowfullscreen"></iframe>
+                </div>
+
+
+                <p>
+                    <hr size="8px" color="black" align="center" width="100%">
+                </p>
+                <h3 class="col-md-12 margin-b-40" style="text-align:center;"><br>▼以下為製作過程▼</h3>
+
+                <h3 class="col-md-12"><br>▼車體並不是一體成型，同時很小，一開始就得考慮配置。</h3>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/3c8PEkU.jpg" alt="bt-11">
+
+                <h3 class="col-md-12"><br>▼懸吊可能不會很明顯，但還是以彈簧試著還原克莉絲蒂懸吊</h3>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/PwFNe4s.jpg" alt="bt-12">
+
+                <h3 class="col-md-12"><br>▼驅動輪部分以四驅車齒輪連動，無法和實車一樣方式實在有點可惜</h3>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/bmMurwP.jpg" alt="bt-13">
+
+                <h3 class="col-md-12"><br>▼內側以皇冠齒輪來減速，由於是緊配，可以利用軸帶動外側的齒輪</h3>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/MBMOxvr.jpg" alt="bt-14">
+
+                <h3 class="col-md-12"><br>▼利用銅棒連接轉向臂測試動作</h3>
+                <div class="col-md-12 margin-b-40" style="position: relative; height: 0; padding-bottom: 56.25%;">
+                    <iframe src="https://www.youtube.com/embed/fjkHSFlGHyM" width="100%" height="450"
+                        style="position: absolute; width: 100%; height: 100%; left: 0;" frameborder="0"
+                        allowfullscreen="allowfullscreen"></iframe>
+                </div>
+
+                <h3 class="col-md-12"><br>▼車身這次的配置就差不多這樣，只打算做行走</h3>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/1CPyOxz.jpg" alt="bt-15">
+
+                <h3 class="col-md-12"><br>▼上電測試行走順暢度 無履帶</h3>
+                <div class="col-md-12 margin-b-40" style="position: relative; height: 0; padding-bottom: 56.25%;">
+                    <iframe src="https://www.youtube.com/embed/__DIxxfXKDc" width="100%" height="450"
+                        style="position: absolute; width: 100%; height: 100%; left: 0;" frameborder="0"
+                        allowfullscreen="allowfullscreen"></iframe>
+                </div>
+
+                <h3 class="col-md-12"><br>▼上電測試行走順暢度 有履帶</h3>
+                <div class="col-md-12 margin-b-40" style="position: relative; height: 0; padding-bottom: 56.25%;">
+                    <iframe src="https://www.youtube.com/embed/xngABfma6CM" width="100%" height="450"
+                        style="position: absolute; width: 100%; height: 100%; left: 0;" frameborder="0"
+                        allowfullscreen="allowfullscreen"></iframe>
+                </div>
+
+                <h3 class="col-md-12"><br>▼調整好後就能塗裝了</h3>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/hsbFGst.jpg" alt="bt-16">
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/6fm8fgh.jpg" alt="bt-17">
+
+                <h3 class="col-md-12"><br>▼貼上水貼，由於必須刺破，所以也得補色</h3>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/k6apjj7.jpg" alt="bt-18">
+
+
+                <h3 class="col-md-12"><br>▼完成</h3>
+                <img class="col-md-12 margin-b-40" src="https://i.imgur.com/luQnHrB.jpg" alt="bt-19">
+
+                <h3> <br>這台的難點主要是車身小，在馬達減速齒輪的部分要減小體積。而前方如同汽車的轉向裝置，塑膠的強度有點讓人擔心，輪軸上轉向部分最好用銅管補強。</h3>
+                <h3> <br></h3>
+
+            </div>
+
+
+        </div>
+        <!-- End Latest Products -->
+
+
+    </div>
+    <!--// end row -->
+</div>
+</div>
+<!-- End Latest works -->
+
+
+<div id="links">
+    <div class="content-lg container">
+        <div class="row bhg1">
+            <!-- Clients -->
+            <div class="content-lg container col-md-12">
+                <!-- Swiper Clients -->
+                <a class="col-sm-12">
+                    <h2>相關改造<span class="text-uppercase margin-l-20" style="color: rgb(58, 58, 58);">左右滑動以檢視更多</span>
+                    </h2>
+                </a>
+                <div class="swiper-slider swiper-clients col-md-12">
+                    <!-- Swiper Wrapper -->
+                    <div class="swiper-wrapper bgh1">
+                        <div class="swiper-slide">
+                            <a href="js-2.html"><img class="swiper-clients-img " src="https://i.imgur.com/dmjf38C.jpg"
+                                    alt="JS-2"></a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href="zero.html"><img class="swiper-clients-img " src="https://i.imgur.com/Dk0hYQo.jpg"
+                                    alt="ZERO"></a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href="churchill.html"><img class="swiper-clients-img"
+                                    src="https://i.imgur.com/28NEQb5.jpg" alt="CHURCHILL"></a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href="bt-42.html"> <img class="swiper-clients-img" src="https://i.imgur.com/ToMALrb.jpg"
+                                    alt="BT-42"></a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href="type10.html"><img class="swiper-clients-img" src="https://i.imgur.com/kqHCh7a.jpg"
+                                    alt="TYPE-10"></a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href="pershing.html"><img class="swiper-clients-img"
+                                    src="https://i.imgur.com/D2dAnkE.jpg" alt="PERSHING"></a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href="kingtiger.html"><img class="swiper-clients-img"
+                                    src="https://i.imgur.com/eQhgnIc.jpg" alt="KINGTIGER"></a>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <a href="yamato.html"><img class="swiper-clients-img " src="https://i.imgur.com/S7nldmh.jpg"
+                                    alt="YAMATO"></a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="cv33.html"><img class="swiper-clients-img " src="https://i.imgur.com/z3yhqqt.jpg"
+                                    alt="CV33"></a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="tirpitz.html"><img class="swiper-clients-img "
+                                    src="https://i.imgur.com/JcYeShe.jpg" alt="Tirpitz"></a>
+                        </div>
+
+                    </div>
+                    <!-- End Swiper Wrapper -->
+                    <a class="row col-sm-12"><br></a>
+                    <a class="col-sm-2"></a>
+                    <a class="col-sm-2"></a>
+                    <a class="col-sm-2"></a>
+                    <a class="col-sm-2"></a>
+                    <a class="col-sm-2"></a>
+                    <a class="col-sm-2 " href="works.html">
+                        <h3 style="color: rgb(77, 77, 77);">往作品一覽>></h3>
+                    </a>
+                </div>
+                <!-- End Swiper Clients -->
+
+
+            </div>
+        </div>
+        <!-- End Clients -->
+    </div>
+
+</div>
+
+
+<!--========== END PAGE LAYOUT ==========-->
+<div id="contact">
+    <!--========== FOOTER ==========-->
+    <footer class="footer" style="background-color:rgb(255, 255, 255);opacity:0.8;">
+        <!-- Links -->
+        <div class="section-seperator">
+            <div class="content-md container">
                 <div class="row">
-                    <div class="col-xs-6">
-                        <img class="footer-logo" src="https://i.imgur.com/gMNRTAW.png" alt="RYUOU Logo">
+                    <div class="col-sm-2 sm-margin-b-30">
+                        <!-- List -->
+                        <ul class="list-unstyled footer-list">
+                            <li class="footer-list-item"><a href="about.html">介紹</a></li>
+                            <li class="footer-list-item"><a href="video.html">影片</a></li>
+                            <li class="footer-list-item"><a href="works.html">作品</a></li>
+                        </ul>
+                        <!-- End List -->
                     </div>
-                    <div class="col-xs-6 text-right">
-                        <p class="margin-b-0"><a class="fweight-700" ></a>  by: <a class="fweight-700" >RYUOU Studio</a></p>
+                    <div class="col-sm-2 sm-margin-b-30">
+                        <!-- List -->
+                        <ul class="list-unstyled footer-list">
+                            <li class="footer-list-item"><a href="https://twitter.com/RYUOU12098"
+                                    target="_blank">Twitter</a></li>
+                            <li class="footer-list-item"><a
+                                    href="https://home.gamer.com.tw/homeindex.php?owner=inazuma106"
+                                    target="_blank">巴哈姆特小屋</a></li>
+                            <li class="footer-list-item"><a href="https://t.co/aQ4m3MbGAe?amp=1"
+                                    target="_blank">YouTube</a></li>
+                        </ul>
+                        <!-- End List -->
+                    </div>
+                    <div class="col-sm-2 sm-margin-b-30">
+
+                    </div>
+                    <div class="col-sm-2 sm-margin-b-30">
+
+                    </div>
+                    <div class="col-sm-2 sm-margin-b-30">
+                        <!-- List -->
+
+                    </div>
+                    <div class="col-sm-2 sm-margin-b-30">
+                        <!-- List -->
+                        <img class="img-responsive" src="https://i.imgur.com/x7acpSz.png" alt="Latest Products Image">
+                        <!-- End List -->
                     </div>
                 </div>
                 <!--// end row -->
             </div>
+        </div>
+        <!-- End Links -->
 
-            <!-- End Copyright -->
-        
-        </footer>
+        <!-- Copyright -->
+        <div class="content container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <img class="footer-logo" src="https://i.imgur.com/gMNRTAW.png" alt="RYUOU Logo">
+                </div>
+                <div class="col-xs-6 text-right">
+                    <p class="margin-b-0"><a class="fweight-700"></a> by: <a class="fweight-700">RYUOU Studio</a></p>
+                </div>
+            </div>
+            <!--// end row -->
         </div>
 
-        <!--========== END FOOTER ==========-->
+        <!-- End Copyright -->
 
-        <!-- Back To Top -->
-        <a href="javascript:void(0);" class="js-back-to-top back-to-top">TOP</a>
+    </footer>
+</div>
 
-        <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-        <!-- CORE PLUGINS -->
-        <script src="vendor/jquery.min.js" type="text/javascript"></script>
-        <script src="vendor/jquery-migrate.min.js" type="text/javascript"></script>
-        <script src="vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<!--========== END FOOTER ==========-->
 
-        <!-- PAGE LEVEL PLUGINS -->
-        <script src="vendor/jquery.easing.js" type="text/javascript"></script>
-        <script src="vendor/jquery.back-to-top.js" type="text/javascript"></script>
-        <script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script>
-        <script src="vendor/jquery.wow.min.js" type="text/javascript"></script>
-        <script src="vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
-        <script src="vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
-        <script src="vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+<!-- Back To Top -->
+<a href="javascript:void(0);" class="js-back-to-top back-to-top">TOP</a>
 
-        <!-- PAGE LEVEL SCRIPTS -->
-        <script src="js/layout.min.js" type="text/javascript"></script>
-        <script src="js/components/wow.min.js" type="text/javascript"></script>
-        <script src="js/components/swiper.min.js" type="text/javascript"></script>
-        <script src="js/components/masonry.min.js" type="text/javascript"></script>
-        
-        
-        <style>
-            .square {
-	        width: 100px;
-	        border-radius: 50%;
-	        border: 1px solid rgba(0,0,0,1.00);
-            }
-        </style>
- <style>
-     .bhg{
-        background: rgba(15, 15, 12, 0.6);margin-bottom: 10px;
-    }
-    .bhg1{
-        background: rgba(255, 255, 255, 0.6);margin-bottom: 10px;
-    }
+<!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- CORE PLUGINS -->
+<script src="vendor/jquery.min.js" type="text/javascript"></script>
+<script src="vendor/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!-- PAGE LEVEL PLUGINS -->
+<script src="vendor/jquery.easing.js" type="text/javascript"></script>
+<script src="vendor/jquery.back-to-top.js" type="text/javascript"></script>
+<script src="vendor/jquery.smooth-scroll.js" type="text/javascript"></script>
+<script src="vendor/jquery.wow.min.js" type="text/javascript"></script>
+<script src="vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+<script src="vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+<script src="vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+
+<!-- PAGE LEVEL SCRIPTS -->
+<script src="js/layout.min.js" type="text/javascript"></script>
+<script src="js/components/wow.min.js" type="text/javascript"></script>
+<script src="js/components/swiper.min.js" type="text/javascript"></script>
+<script src="js/components/masonry.min.js" type="text/javascript"></script>
 
 
-    .bhg2{
-        background: rgba(196, 196, 196, 0.6);margin-bottom: 10px;
+<style>
+    .square {
+        width: 100px;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, 1.00);
     }
 </style>
 <style>
-    .green{
-        background: rgba(203,238,235,0.8);margin-bottom: 10px;
+    .bhg {
+        background: rgba(15, 15, 12, 0.6);
+        margin-bottom: 10px;
     }
-</style>
 
-<style>
-.video-container { 
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px;
-    height: 0;
-    overflow: hidden;
-  }
-  
-  .video-container iframe,
-  .video-container object,
-  .video-container embed {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-  }
-  </style>
-<style>
-    .orange{
-        background: rgba(255,247,210,0.8);margin-bottom: 10px;
+    .bhg1 {
+        background: rgba(255, 255, 255, 0.6);
+        margin-bottom: 10px;
+    }
+
+
+    .bhg2 {
+        background: rgba(196, 196, 196, 0.6);
+        margin-bottom: 10px;
     }
 </style>
 <style>
-    .grey{
-        background: rgba(97, 97, 96, 0.349);margin-bottom: 10px;
+    .green {
+        background: rgba(203, 238, 235, 0.8);
+        margin-bottom: 10px;
     }
 </style>
 
 <style>
-.h9 {
-    -webkit-text-stroke: 1px rgb(51, 51, 51);
-    -webkit-text-fill-color: white;
-}
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 30px;
+        height: 0;
+        overflow: hidden;
+    }
+
+    .video-container iframe,
+    .video-container object,
+    .video-container embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<style>
+    .orange {
+        background: rgba(255, 247, 210, 0.8);
+        margin-bottom: 10px;
+    }
+</style>
+<style>
+    .grey {
+        background: rgba(97, 97, 96, 0.349);
+        margin-bottom: 10px;
+    }
+</style>
+
+<style>
+    .h9 {
+        -webkit-text-stroke: 1px rgb(51, 51, 51);
+        -webkit-text-fill-color: white;
+    }
 </style>
 
 
@@ -443,6 +500,6 @@
 
 
 </body>
-    <!-- END BODY -->
-</html>
+<!-- END BODY -->
 
+</html>
