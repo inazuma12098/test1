@@ -92,6 +92,7 @@
 
 
 <div class="content-lg container bgoo">
+    <div id="title"></div>
     <div class="row margin-b-40 bgo">
         <div class="col-sm-6">
             <h2>小遊戲--將相同形狀的圖片移到位置上</h2>
@@ -102,10 +103,8 @@
     <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-12">
         <div class="justify-content-around">
             <span style="font-family:Microsoft JhengHei;">
-                <div class="col-sm-7 center">
-                    <a style="color: red;">
-                        <div id="container"></div>
-                    </a>
+                <div class="center" style="color: red;">
+                        <div class="center" id="container"></div>
                 </div>
             </span>
 
@@ -151,10 +150,10 @@
                 function drawBackground(background, bgImg, text) {
                     var context = background.getContext();
                     context.drawImage(bgImg, 0, 0);   //背景圖片座標
-                    context.setAttr('font', '20pt Calibri');
-                    context.setAttr('textAlign', 'center');
-                    context.setAttr('fillStyle', 'white');
-                    context.fillText(text, background.getStage().width() / 2, 40);
+                    context.setAttr('font', '40pt Arial');  //改字體大小
+                    context.setAttr('textAlign', 'center');//改位置
+                    context.setAttr('fillStyle', 'LightSeaGreen');//改樣式顏色
+                    context.fillText(text, background.getStage().width() / 2, 50);
                 }
 
                 function isNearOutline(animal, ex, ey) {
@@ -173,8 +172,8 @@
                     var score = 0;
                     var stage = new Konva.Stage({
                         container: 'container',
-                        width: 578,                 //遊戲頁框大小
-                        height: 530
+                        width: 1115,                 //遊戲頁框大小
+                        height: 520
                     });
                     var background = new Konva.Layer();
                     var animalLayer = new Konva.Layer();
@@ -260,9 +259,7 @@
                 }
 
             </script>
-            <style>
-
-            </style>
+          
 
 
         </div>
