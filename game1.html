@@ -111,14 +111,19 @@
 
                 var bkimage = "beach"
                 var animals = ["monkey", "lion", "giraffe", "snake", "panzer"]
+
+                
                 var paths = {
-                    monkey: { sx: 275, sy: 70, ex: 300, ey: 420 },
-                    lion: { sx: 400, sy: 70, ex: 100, ey: 390 },
-                    giraffe: { sx: 90, sy: 70, ex: 390, ey: 250 },
-                    snake: { sx: 10, sy: 70, ex: 275, ey: 350 },
-                    panzer: { sx: 300, sy: 250, ex: 10, ey: 350 },
+                    monkey: { sx: 5, sy: 200, ex: 300, ey: 420 },
+                    lion: { sx: 400, sy: 70, ex: 100, ey: 330 },
+                    giraffe: { sx: 200, sy: 70, ex: 390, ey: 250 },
+                    snake: { sx: 10, sy: 70, ex: 275, ey: 320 },
+                    panzer: { sx: 90, sy: 70, ex: 700, ey: 330 },
                 }
                 var loadedImages = 0;
+
+                
+
 
                 loadImages(bkimage, animals, initStage)
 
@@ -151,7 +156,7 @@
                     context.setAttr('font', '40pt Arial');  //改字體大小
                     context.setAttr('textAlign', 'center');//改位置
                     context.setAttr('fillStyle', 'LightSeaGreen');//改樣式顏色
-                    context.fillText(text, background.getStage().width() / 2, 50);//改寬度高度
+                    context.fillText(text, background.getStage().width() / 2, 70);//改寬度高度
                 }
 
                 function isNearOutline(animal, ex, ey) {
@@ -221,10 +226,12 @@
                                     animal.inRightPlace = true;
 
                                     if (++score >= 5) {
+                                        
+
                                         var text1 = '棒喔'
                                         drawBackground(background, images.beach, text1);
                                         
-
+                                        
                                     }
 
                                     // disable drag and drop
@@ -262,7 +269,7 @@
 
             </script>
           
-
+            
 
         </div>
 
