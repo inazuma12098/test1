@@ -91,159 +91,161 @@
     </div>
     <!--// end row -->
     <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-12">
-        <div class="margin:auto">
-            <div id="container"></div>
-            <div class="row ">
-                <div class="col-sm-12 ">
-                    <script>
-                        var bkimage = "beach"
-                        var animals = ["monkey", "lion", "giraffe", "snake", "panzer"]
-                        var paths = {
-                            monkey: { sx: 275, sy: 70, ex: 300, ey: 420 },
-                            lion: { sx: 400, sy: 70, ex: 100, ey: 390 },
-                            giraffe: { sx: 90, sy: 70, ex: 390, ey: 250 },
-                            snake: { sx: 10, sy: 70, ex: 275, ey: 350 },
-                            panzer: { sx: 300, sy: 250, ex: 10, ey: 350 },
-                        }
-                        var loadedImages = 0;
-
-                        loadImages(bkimage, animals, initStage)
-
-                        function loadImages(bgimg, fgimgs, callback) {
-                            var assetDir = 'assets/';
-                            var variants = ["", "_black", "_glow"];
-                            var images = {};
-                            var sources = [bgimg]
-                            for (var i = 0; i < fgimgs.length; i++) {
-                                for (var j = 0; j < variants.length; j++) {
-                                    sources.push(fgimgs[i] + variants[j])
-                                }
-                            }
-                            var numImages = sources.length;
-                            for (var i = 0; i < sources.length; i++) {
-                                var src = sources[i]
-                                images[src] = new Image();
-                                images[src].src = assetDir + src + ".png";
-                                images[src].onload = function () {
-                                    if (++loadedImages >= numImages) {
-                                        callback(images);
-                                    }
-                                };
-                            }
-                        }
-
-                        function drawBackground(background, bgImg, text) {
-                            var context = background.getContext();
-                            context.drawImage(bgImg, 500, 0);   //背景圖片座標
-                            context.setAttr('font', '20pt Calibri');
-                            context.setAttr('textAlign', 'center');
-                            context.setAttr('fillStyle', 'white');
-                            context.fillText(text, background.getStage().width() / 2, 40);
-                        }
-
-                        function isNearOutline(animal, ex, ey) {
-                            var a = animal;
-                            var ax = a.x();
-                            var ay = a.y();
-
-                            if (ax > ex - 20 && ax < ex + 20 && ay > ey - 20 && ay < ey + 20) {
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        }
-
-                        function initStage(images) {
-                            var score = 0;
-                            var stage = new Konva.Stage({
-                                container: 'container',
-                                width: 578,                 //遊戲頁框大小
-                                height: 530
-                            });
-                            var background = new Konva.Layer();
-                            var animalLayer = new Konva.Layer();
-
-                            for (var key in paths) { // key = monkey, lion, ...
-                                var setAnimal = function () {
-                                    var animal = new Konva.Image({
-                                        image: images[key],
-                                        x: paths[key].sx,                 //物件位置放置程式
-                                        y: paths[key].sy,
-                                        draggable: true
-                                    });
-                                    var privKey = key
-                                    // make animal glow on mouseover
-                                    animal.on('mouseover', function () {
-                                        animal.image(images[privKey + '_glow']);
-                                        animalLayer.draw();
-                                        document.body.style.cursor = 'pointer';
-                                    });
-                                    // return animal on mouseout
-                                    animal.on('mouseout', function () {
-                                        animal.image(images[privKey]);
-                                        animalLayer.draw();
-                                        document.body.style.cursor = 'default';
-                                    });
-                                    animal.on('dragstart', function () {
-                                        this.moveToTop();
-                                        animalLayer.draw();
-                                    });
-                                    animal.on('dragmove', function () {
-                                        document.body.style.cursor = 'pointer';
-                                    });
-                                    /*
-                                     * check if animal is in the right spot and
-                                     * snap into place if it is
-                                     */
-                                    animal.on('dragend', function () {
-                                        var home = paths[privKey]
-                                        if (!animal.inRightPlace && isNearOutline(animal, home.ex, home.ey)) {
-                                            animal.position({
-                                                x: home.ex,
-                                                y: home.ey
-                                            });
-                                            animalLayer.draw();
-                                            animal.inRightPlace = true;
-
-                                            if (++score >= 5) {
-                                                var text = '你找到所有圖片了';
-                                                drawBackground(background, images.beach, text);
-                                            }
-
-                                            // disable drag and drop
-                                            setTimeout(function () {
-                                                animal.draggable(false);
-                                            }, 50);
-                                        }
-                                    });
-                                    animalLayer.add(animal);
-                                }
-                                setAnimal()
-
-                                var setAnimalHome = function () {
-                                    var animal = new Konva.Image({
-                                        image: images[key + "_black"],
-                                        x: paths[key].ex,
-                                        y: paths[key].ey,
-                                    });
-                                    animalLayer.add(animal);
-                                }
-                                setAnimalHome()
-                            }
-
-                            stage.add(background);
-                            stage.add(animalLayer);
-
-                            drawBackground(
-                                background,
-                                images[bkimage],
-                                '將相同形狀的圖片拖曳到位置上'
-                            );
-                        }
-
-                    </script>
-                </div>
+        <div class="justify-content-around">
+            <div class="col-sm-7 center">
+                <div id="container"></div>
             </div>
+
+
+            <script>
+                var bkimage = "beach"
+                var animals = ["monkey", "lion", "giraffe", "snake", "panzer"]
+                var paths = {
+                    monkey: { sx: 275, sy: 70, ex: 300, ey: 420 },
+                    lion: { sx: 400, sy: 70, ex: 100, ey: 390 },
+                    giraffe: { sx: 90, sy: 70, ex: 390, ey: 250 },
+                    snake: { sx: 10, sy: 70, ex: 275, ey: 350 },
+                    panzer: { sx: 300, sy: 250, ex: 10, ey: 350 },
+                }
+                var loadedImages = 0;
+
+                loadImages(bkimage, animals, initStage)
+
+                function loadImages(bgimg, fgimgs, callback) {
+                    var assetDir = 'assets/';
+                    var variants = ["", "_black", "_glow"];
+                    var images = {};
+                    var sources = [bgimg]
+                    for (var i = 0; i < fgimgs.length; i++) {
+                        for (var j = 0; j < variants.length; j++) {
+                            sources.push(fgimgs[i] + variants[j])
+                        }
+                    }
+                    var numImages = sources.length;
+                    for (var i = 0; i < sources.length; i++) {
+                        var src = sources[i]
+                        images[src] = new Image();
+                        images[src].src = assetDir + src + ".png";
+                        images[src].onload = function () {
+                            if (++loadedImages >= numImages) {
+                                callback(images);
+                            }
+                        };
+                    }
+                }
+
+                function drawBackground(background, bgImg, text) {
+                    var context = background.getContext();
+                    context.drawImage(bgImg, 0, 0);   //背景圖片座標
+                    context.setAttr('font', '20pt Calibri');
+                    context.setAttr('textAlign', 'center');
+                    context.setAttr('fillStyle', 'white');
+                    context.fillText(text, background.getStage().width() / 2, 40);
+                }
+
+                function isNearOutline(animal, ex, ey) {
+                    var a = animal;
+                    var ax = a.x();
+                    var ay = a.y();
+
+                    if (ax > ex - 20 && ax < ex + 20 && ay > ey - 20 && ay < ey + 20) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+
+                function initStage(images) {
+                    var score = 0;
+                    var stage = new Konva.Stage({
+                        container: 'container',
+                        width: 578,                 //遊戲頁框大小
+                        height: 530
+                    });
+                    var background = new Konva.Layer();
+                    var animalLayer = new Konva.Layer();
+
+                    for (var key in paths) { // key = monkey, lion, ...
+                        var setAnimal = function () {
+                            var animal = new Konva.Image({
+                                image: images[key],
+                                x: paths[key].sx,                 //物件位置放置程式
+                                y: paths[key].sy,
+                                draggable: true
+                            });
+                            var privKey = key
+                            // make animal glow on mouseover
+                            animal.on('mouseover', function () {
+                                animal.image(images[privKey + '_glow']);
+                                animalLayer.draw();
+                                document.body.style.cursor = 'pointer';
+                            });
+                            // return animal on mouseout
+                            animal.on('mouseout', function () {
+                                animal.image(images[privKey]);
+                                animalLayer.draw();
+                                document.body.style.cursor = 'default';
+                            });
+                            animal.on('dragstart', function () {
+                                this.moveToTop();
+                                animalLayer.draw();
+                            });
+                            animal.on('dragmove', function () {
+                                document.body.style.cursor = 'pointer';
+                            });
+                            /*
+                             * check if animal is in the right spot and
+                             * snap into place if it is
+                             */
+                            animal.on('dragend', function () {
+                                var home = paths[privKey]
+                                if (!animal.inRightPlace && isNearOutline(animal, home.ex, home.ey)) {
+                                    animal.position({
+                                        x: home.ex,
+                                        y: home.ey
+                                    });
+                                    animalLayer.draw();
+                                    animal.inRightPlace = true;
+
+                                    if (++score >= 5) {
+                                        var text = '你找到所有圖片了';
+                                        drawBackground(background, images.beach, text);
+                                    }
+
+                                    // disable drag and drop
+                                    setTimeout(function () {
+                                        animal.draggable(false);
+                                    }, 50);
+                                }
+                            });
+                            animalLayer.add(animal);
+                        }
+                        setAnimal()
+
+                        var setAnimalHome = function () {
+                            var animal = new Konva.Image({
+                                image: images[key + "_black"],
+                                x: paths[key].ex,
+                                y: paths[key].ey,
+                            });
+                            animalLayer.add(animal);
+                        }
+                        setAnimalHome()
+                    }
+
+                    stage.add(background);
+                    stage.add(animalLayer);
+
+                    drawBackground(
+                        background,
+                        images[bkimage],
+                        '將相同形狀的圖片拖曳到位置上'
+                    );
+                }
+
+            </script>
+
+
         </div>
 
     </div>
@@ -361,6 +363,11 @@
         width: 235px;
         border-radius: 50%;
         border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .center {
+        margin: 0 auto;
+        float: none;
     }
 </style>
 <style>
