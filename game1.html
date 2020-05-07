@@ -103,11 +103,19 @@
     <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-12">
         <div class="justify-content-around">
             <span style="font-family:Microsoft JhengHei;">
-                <div class="center" id="container"></div>
+                <div class="center" id="container">
+
+                </div>
             </span>
+            <audio id="pass1">
+                <source src="assets/pass1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <audio id="pass4">
+                <source src="assets/pass4.mp3" type="audio/mpeg">
 
+            </audio>
             <script>
-
                 var bkimage = "beach"
                 var animals = ["monkey", "lion", "giraffe", "snake", "panzer"]
 
@@ -123,23 +131,20 @@
                 }
                 var loadedImages = 0;
 
-
-
-
                 loadImages(bkimage, animals, initStage)
 
                 function loadImages(bgimg, fgimgs, callback) {
                     var assetDir = 'assets/';
-                    var variants = ["", "_black", "_glow", "_gold"];
+                    var variants = ["", "_black", "_glow"];
                     var images = {};
                     var sources = [bgimg]
-                    for (var i = 0; i < fgimgs.length; i++) {           //讀圖檔名
+                    for (var i = 0; i < fgimgs.length; i++) {
                         for (var j = 0; j < variants.length; j++) {
                             sources.push(fgimgs[i] + variants[j])
                         }
                     }
                     var numImages = sources.length;
-                    for (var i = 0; i < sources.length; i++) {      //  載圖
+                    for (var i = 0; i < sources.length; i++) {
                         var src = sources[i]
                         images[src] = new Image();
                         images[src].src = assetDir + src + ".png";
@@ -151,7 +156,6 @@
                     }
                 }
 
-
                 function drawBackground(background, bgImg, text) {
                     var context = background.getContext();
                     context.drawImage(bgImg, 0, 0);   //背景圖片座標
@@ -160,9 +164,6 @@
                     context.setAttr('fillStyle', 'LightSeaGreen');//改樣式顏色
                     context.fillText(text, background.getStage().width() / 2, 70);//改寬度高度
                 }
-
-
-
                 function isNearOutline(animal, ex, ey) {
                     var a = animal;                         //吸引
                     var ax = a.x();
@@ -176,6 +177,7 @@
                         return false;
                     }
                 }
+
 
                 function initStage(images) {
                     var score = 0;
@@ -191,14 +193,11 @@
                         var setAnimal = function () {
                             var animal = new Konva.Image({
                                 image: images[key],
-                                x: paths[key].sx,                 //原始物件位置放置程式
+                                x: paths[key].sx,
                                 y: paths[key].sy,
                                 draggable: true
                             });
-
-
                             var privKey = key
-                            // make animal glow on mouseover
                             animal.on('mouseover', function () {
                                 if (animal.draggable() != false) {
                                     animal.image(images[privKey + '_glow']);//滑鼠在物件上
@@ -237,51 +236,35 @@
                              */
                             animal.on('dragend', function () {
                                 var home = paths[privKey]
-                               
-
                                 if (!animal.inRightPlace && isNearOutline(animal, home.ex, home.ey)) {
-
                                     animal.position({
                                         x: home.ex,
                                         y: home.ey
                                     });
-                                    
-                                    
                                     animalLayer.draw();
                                     animal.inRightPlace = true;
 
                                     if (++score >= 5) {
-
-
-                                        var text1 = '你完成了拼圖'
+                                        var x = document.getElementById("pass4");
+                                        x.play();
+                                        var text1 = '全部拼完了'
                                         drawBackground(background, images.beach, text1);
-
-
+                                    } else {
+                                        var x = document.getElementById("pass1");
+                                        x.play();
                                     }
 
                                     // disable drag and drop
                                     setTimeout(function () {
-
                                         animal.draggable(false);
-                                        animal.hide();
-                                       
-                                    
-                                        
-                                       
-
                                     }, 50);
-
-
-
                                 }
-
                             });
                             animalLayer.add(animal);
                         }
                         setAnimal()
 
-
-                        var setAnimalHome = function () {   //設定黑色終點
+                        var setAnimalHome = function () {
                             var animal = new Konva.Image({
                                 image: images[key + "_black"],
                                 x: paths[key].ex,
@@ -291,27 +274,7 @@
                             animal.zIndex(-1);
                         }
                         setAnimalHome()
-
-
-
-                        /*        var setAnimalgold = function () {   //設定彩色終點
-                                    var animal = new Konva.Image({
-                                        image: images[key + "_gold"],
-                                        x: paths[key].ex,
-                                        y: paths[key].ey,
-                                    });
-                                    animalLayer.add(animal);
-        
-                                    animal.hide()
-                                }
-                           */
-
-
-
-
                     }
-
-
 
                     stage.add(background);
                     stage.add(animalLayer);
@@ -319,14 +282,9 @@
                     drawBackground(
                         background,
                         images[bkimage],
-                        '將相同形狀的圖片移到位置上'
-
-
+                        'Ahoy! Put the animals on the beach!'
                     );
                 }
-
-
-
 
             </script>
 
