@@ -123,7 +123,7 @@
         
                 var paths = {
         
-                    monkey: { sx: 5, sy: 200, ex: 260, ey: 420 },
+                    monkey: { sx: 5, sy: 200, ex: 260, ey: 420 },   //這邊順序會影響最後圖層順序 先寫的在下面
                     lion: { sx: 400, sy: 70, ex: 255, ey: 330 },
                     giraffe: { sx: 200, sy: 70, ex: 250, ey: 250 },
                     snake: { sx: 10, sy: 70, ex: 275, ey: 320 },
@@ -190,6 +190,7 @@
                     var background = new Konva.Layer();
                     var animalLayer = new Konva.Layer();
                     var animalhome = new Konva.Layer();
+                    var final = new Konva.Layer();
         
                     for (var key in paths) { // key = monkey, lion, ...
                         var setAnimal = function () {
@@ -199,14 +200,25 @@
                                 y: paths[key].sy,
                                 draggable: true
                             });
+
                             var animal2 = new Konva.Image({
                                 image: images[key + "_black"],
                                 x: paths[key].ex,
                                 y: paths[key].ey,
                             });
-        
                             animalhome.add(animal2);
                             animal2.setZIndex(0);
+
+                           
+                            var final1 = new Konva.Image({
+                                image: images[key],
+                                x: paths[key].ex,
+                                y: paths[key].ey,
+                                draggable: false
+                            });
+                            final.add(final1);
+                            
+                        
         
                             var privKey = key
                             animal.on('mouseover', function () {
@@ -293,6 +305,7 @@
                     }
         
                     stage.add(background); //順序關係圖層高度 上面比較後面
+                    stage.add(final);
                     stage.add(animalhome);
                     stage.add(animalLayer);
         
