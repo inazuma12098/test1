@@ -200,28 +200,28 @@
                             var privKey = key
                             // make animal glow on mouseover
                             animal.on('mouseover', function () {
-                                if(animal.draggable()!=false){
-                                animal.image(images[privKey + '_glow']);//滑鼠在物件上
-                                animalLayer.draw();
-                                document.body.style.cursor = 'pointer';//游標變化
-                                }else{
-                                animal.image(images[privKey]);//滑鼠在物件上
-                                animalLayer.draw();
-                                document.body.style.cursor = 'default';//游標變化
+                                if (animal.draggable() != false) {
+                                    animal.image(images[privKey + '_glow']);//滑鼠在物件上
+                                    animalLayer.draw();
+                                    document.body.style.cursor = 'pointer';//游標變化
+                                } else {
+                                    animal.image(images[privKey]);//滑鼠在物件上
+                                    animalLayer.draw();
+                                    document.body.style.cursor = 'default';//游標變化
                                 }
 
                             });
                             // return animal on mouseout
                             animal.on('mouseout', function () {//滑鼠移開物件
 
-                                if(animal.draggable()!=false){
-                                animal.image(images[privKey]);
-                                animalLayer.draw();
-                                document.body.style.cursor = 'default';//游標變化
-                                }else{
-                                animal.image(images[privKey+'_gold']);
-                                animalLayer.draw();
-                                document.body.style.cursor = 'default';//游標變化
+                                if (animal.draggable() != false) {
+                                    animal.image(images[privKey]);
+                                    animalLayer.draw();
+                                    document.body.style.cursor = 'default';//游標變化
+                                } else {
+                                    animal.image(images[privKey + '_gold']);
+                                    animalLayer.draw();
+                                    document.body.style.cursor = 'default';//游標變化
                                 }
                             });
                             animal.on('dragstart', function () {
@@ -237,16 +237,15 @@
                              */
                             animal.on('dragend', function () {
                                 var home = paths[privKey]
+                               
 
                                 if (!animal.inRightPlace && isNearOutline(animal, home.ex, home.ey)) {
 
                                     animal.position({
                                         x: home.ex,
                                         y: home.ey
-
-
                                     });
-
+                                    
                                     
                                     animalLayer.draw();
                                     animal.inRightPlace = true;
@@ -262,12 +261,13 @@
 
                                     // disable drag and drop
                                     setTimeout(function () {
-                                       
+
                                         animal.draggable(false);
-                                        var text1 = animal.draggable()
-                                        drawBackground(background, images.beach, text1);
-
-
+                                        animal.hide();
+                                       
+                                    
+                                        
+                                       
 
                                     }, 50);
 
@@ -294,17 +294,17 @@
 
 
 
-                /*        var setAnimalgold = function () {   //設定彩色終點
-                            var animal = new Konva.Image({
-                                image: images[key + "_gold"],
-                                x: paths[key].ex,
-                                y: paths[key].ey,
-                            });
-                            animalLayer.add(animal);
-
-                            animal.hide()
-                        }
-                   */     
+                        /*        var setAnimalgold = function () {   //設定彩色終點
+                                    var animal = new Konva.Image({
+                                        image: images[key + "_gold"],
+                                        x: paths[key].ex,
+                                        y: paths[key].ey,
+                                    });
+                                    animalLayer.add(animal);
+        
+                                    animal.hide()
+                                }
+                           */
 
 
 
