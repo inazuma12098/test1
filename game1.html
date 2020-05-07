@@ -106,7 +106,8 @@
                 <div class="center" id="container">
 
                 </div>
-            </span>
+            </span><br>
+            <a href="javascript:window.location.reload()">重新整理</a>
             <audio id="pass1">
                 <source src="assets/pass1.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
@@ -118,21 +119,21 @@
             <script>
                 var bkimage = "beach"
                 var animals = ["monkey", "lion", "giraffe", "snake", "panzer"]
-
-
+        
+        
                 var paths = {
-
+        
                     monkey: { sx: 5, sy: 200, ex: 260, ey: 420 },
                     lion: { sx: 400, sy: 70, ex: 255, ey: 330 },
                     giraffe: { sx: 200, sy: 70, ex: 250, ey: 250 },
                     snake: { sx: 10, sy: 70, ex: 275, ey: 320 },
                     panzer: { sx: 90, sy: 70, ex: 265, ey: 330 },
-
+        
                 }
                 var loadedImages = 0;
-
+        
                 loadImages(bkimage, animals, initStage)
-
+        
                 function loadImages(bgimg, fgimgs, callback) {
                     var assetDir = 'assets/';
                     var variants = ["", "_black", "_glow"];
@@ -155,7 +156,7 @@
                         };
                     }
                 }
-
+        
                 function drawBackground(background, bgImg, text) {
                     var context = background.getContext();
                     context.drawImage(bgImg, 0, 0);   //背景圖片座標
@@ -177,8 +178,8 @@
                         return false;
                     }
                 }
-
-
+        
+        
                 function initStage(images) {
                     var score = 0;
                     var stage = new Konva.Stage({
@@ -188,7 +189,8 @@
                     });
                     var background = new Konva.Layer();
                     var animalLayer = new Konva.Layer();
-
+                    var animalhome = new Konva.Layer();
+        
                     for (var key in paths) { // key = monkey, lion, ...
                         var setAnimal = function () {
                             var animal = new Konva.Image({
@@ -197,6 +199,15 @@
                                 y: paths[key].sy,
                                 draggable: true
                             });
+                            var animal2 = new Konva.Image({
+                                image: images[key + "_black"],
+                                x: paths[key].ex,
+                                y: paths[key].ey,
+                            });
+        
+                            animalhome.add(animal2);
+                            animal2.setZIndex(0);
+        
                             var privKey = key
                             animal.on('mouseover', function () {
                                 if (animal.draggable() != false) {
@@ -208,17 +219,17 @@
                                     animalLayer.draw();
                                     document.body.style.cursor = 'default';//游標變化
                                 }
-
+        
                             });
                             // return animal on mouseout
                             animal.on('mouseout', function () {//滑鼠移開物件
-
+        
                                 if (animal.draggable() != false) {
                                     animal.image(images[privKey]);
                                     animalLayer.draw();
                                     document.body.style.cursor = 'default';//游標變化
                                 } else {
-                                    animal.image(images[privKey + '_gold']);
+                                    animal.image(images[privKey + '_glow']);
                                     animalLayer.draw();
                                     document.body.style.cursor = 'default';//游標變化
                                 }
@@ -236,56 +247,62 @@
                              */
                             animal.on('dragend', function () {
                                 var home = paths[privKey]
+        
                                 if (!animal.inRightPlace && isNearOutline(animal, home.ex, home.ey)) {
+                                    
                                     animal.position({
                                         x: home.ex,
                                         y: home.ey
                                     });
+                                    animal2.position({
+                                        x: home.ex,
+                                        y: home.ey
+                                    });
                                     animalLayer.draw();
+                                    animalhome.draw();
                                     animal.inRightPlace = true;
-
+                                    // disable drag and drop
+                                    setTimeout(function () {
+                                        animal.draggable(false);
+                                        animal.hide();
+                                        animal2.hide();
+                                        //animalhome.hide(); 藏整層黑色layer
+                                        animalLayer.draw();
+                                        animalhome.draw();
+                                    }, 50);
+        
                                     if (++score >= 5) {
                                         var x = document.getElementById("pass4");
                                         x.play();
                                         var text1 = '全部拼完了'
                                         drawBackground(background, images.beach, text1);
                                     } else {
+        
                                         var x = document.getElementById("pass1");
                                         x.play();
                                     }
-
-                                    // disable drag and drop
-                                    setTimeout(function () {
-                                        animal.draggable(false);
-                                    }, 50);
+        
+        
                                 }
                             });
-                            animalLayer.add(animal);
+                            animalLayer.add(animal); animal.setZIndex(50);
                         }
                         setAnimal()
-
-                        var setAnimalHome = function () {
-                            var animal = new Konva.Image({
-                                image: images[key + "_black"],
-                                x: paths[key].ex,
-                                y: paths[key].ey,
-                            });
-                            animalLayer.add(animal);
-                            animal.zIndex(-1);
-                        }
-                        setAnimalHome()
+        
+                       
                     }
-
-                    stage.add(background);
+        
+                    stage.add(background); //順序關係圖層高度 上面比較後面
+                    stage.add(animalhome);
                     stage.add(animalLayer);
-
+        
                     drawBackground(
                         background,
                         images[bkimage],
-                        'Ahoy! Put the animals on the beach!'
+                        '移動吧!'
                     );
                 }
-
+        
             </script>
 
         </div>
