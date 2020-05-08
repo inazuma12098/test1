@@ -95,223 +95,283 @@
     <div id="title"></div>
     <div class="row margin-b-40 bgo">
         <div class="col-sm-6">
-            <h2>小遊戲--將相同形狀的圖片移到位置上</h2>
+            <h2>拼圖遊戲</h2>
             <p></p>
         </div>
     </div>
     <!--// end row -->
     <div class="masonry-grid-item col-xs-12 col-sm-6 col-md-12">
         <div class="justify-content-around">
-            <span style="font-family:Microsoft JhengHei;">
+            <span style="font-family:Arial, Helvetica, sans-serif;">
                 <div class="center" id="container">
 
                 </div>
             </span><br>
-            <a href="javascript:window.location.reload()">重新整理</a>
-            <a href="networks.html">回學習成品列表</a>
+            <hr style="width: 100%; height: 4px ;border: none; background-color: rgba(116, 116, 116, 0.685);">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-5">
+            <h3 style="color: cornflowerblue;"><a href="javascript:window.location.reload()">重新整理</a></h3></div>
+            <div class = "col-sm-3"> <h3 style="color: cornflowerblue;"><a href="networks.html">回學習成品列表</a></h3></div> 
+            <div class="col-sm-2"></div>
             <audio id="pass1">
                 <source src="assets/pass1.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
+
             </audio>
             <audio id="pass4">
                 <source src="assets/pass4.mp3" type="audio/mpeg">
 
             </audio>
-            <script>
-                var bkimage = "background"
-                var parts = ["rsuspension", "tail", "chassis", "turret", "lsuspension","flag"]
 
+            <div id="notes">
+                <div class="container row col-md-12 margin-b-40 bgo ">
+                    <h2>學習心得</h2>
+                </div>
+                <div class="container row col-md-12 margin-b-40">
+                   <p></p> <h3>這次所做的小遊戲是個類似拼圖的遊戲，因為這個構想，我就想說做類似立體的拼圖。但這樣一來遇到了問題，要立體的話就會有前後，但在經過測試，後放的物件必定在上面，因為移動時movetoTop了。
+                    </h3></p>
 
-                var paths = {
+                  <p>  <h3>於是想說改變物件屬性，但我不知道如何把單一個叫出來改就作罷。乾脆用填洞的方式來讓最下層的圖片顯示出來，但是了很久都只能讓移動的hide，黑洞卻無法hide。後來突然想到既然同檔名，那就分兩個部分讓程式找到檔名一致的藏起來就可以了。
+                    </h3></p>
 
-                    rsuspension: { sx: 5, sy: 200, ex: 534, ey: 250 },   //這邊順序會影響最後圖層順序
-                    tail: { sx: 400, sy: 70, ex: 950, ey: 192 },
-                    chassis: { sx: 200, sy: 70, ex: 600, ey: 175 },
-                    turret: { sx: 10, sy: 70, ex: 665, ey: 108 },
-                    lsuspension: { sx: 90, sy: 70, ex: 669, ey: 273 },
-                    flag: { sx: 90, sy: 70, ex: 792, ey: 25 },
-                }
-                var loadedImages = 0;
-
-                loadImages(bkimage, parts, initStage)
-
-                function loadImages(bgimg, fgimgs, callback) {
-                    var assetDir = 'FT-17/';
-                    var variants = ["", "_black", "_glow"];
-                    var images = {};
-                    var sources = [bgimg]
-                    for (var i = 0; i < fgimgs.length; i++) {
-                        for (var j = 0; j < variants.length; j++) {
-                            sources.push(fgimgs[i] + variants[j])
-                        }
-                    }
-                    var numImages = sources.length;
-                    for (var i = 0; i < sources.length; i++) {
-                        var src = sources[i]
-                        images[src] = new Image();
-                        images[src].src = assetDir + src + ".png";
-                        images[src].onload = function () {
-                            if (++loadedImages >= numImages) {
-                                callback(images);
-                            }
-                        };
-                    }
-                }
-
-                function drawBackground(background, bgImg, text) {
-                    var context = background.getContext();
-                    context.drawImage(bgImg, 0, 0);   //背景圖片座標
-                    context.setAttr('font', '40pt Arial');  //改字體大小
-                    context.setAttr('textAlign', 'center');//改位置
-                    context.setAttr('fillStyle', 'LightSeaGreen');//改樣式顏色
-                    context.fillText(text, background.getStage().width() / 2, 70);//改寬度高度
-                }
-                function isNearOutline(part, ex, ey) {
-                    var a = part;                         //吸引
-                    var ax = a.x();
-                    var ay = a.y();
-                    //吸引
-                    if (ax > ex - 25
-                        && ax < ex + 25
-                        && ay > ey - 25 && ay < ey + 25) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-
-
-                function initStage(images) {
-                    var score = 0;
-                    var stage = new Konva.Stage({
-                        container: 'container',
-                        width: 1100,                 //遊戲頁框大小
-                        height: 500
-                    });
-                    var background = new Konva.Layer();
-                    var panzerLayer = new Konva.Layer();
-                    var finalposition = new Konva.Layer();
-                    var retry = new Konva.Layer();
-
-                    for (var key in paths) { // key = monkey, lion, ...
-                        var setpart = function () {
-                            var part = new Konva.Image({
-                                image: images[key],
-                                x: paths[key].sx,
-                                y: paths[key].sy,
-                                draggable: true
-                            });
-
-                            var part2 = new Konva.Image({
-                                image: images[key + "_black"],
-                                x: paths[key].ex,
-                                y: paths[key].ey,
-                            });
-                            finalposition.add(part2);
-                             part2.setZIndex(0);
-
-
-                            var privKey = key
-                            part.on('mouseover', function () {
-                                if (part.draggable() != false) {
-                                   part.image(images[privKey + '_glow']);//滑鼠在物件上
-                                    panzerLayer.draw();
-                                    document.body.style.cursor = 'pointer';//游標變化
-                                } else {
-                                    part.image(images[privKey]);//滑鼠在物件上
-                                    panzerLayer.draw();
-                                    document.body.style.cursor = 'default';//游標變化
-                                }
-
-                            });
-                            // return animal on mouseout
-                            part.on('mouseout', function () {//滑鼠移開物件
-
-                                if (part.draggable() != false) {
-                                    part.image(images[privKey]);
-                                    panzerLayer.draw();
-                                    document.body.style.cursor = 'default';//游標變化
-                                } else {
-                                    part.image(images[privKey + '_glow']);
-                                    panzerLayer.draw();
-                                    document.body.style.cursor = 'default';//游標變化
-                                }
-                            });
-                            part.on('dragstart', function () {
-                                this.moveToTop();
-                                panzerLayer.draw();
-                            });
-                           part.on('dragmove', function () {
-                                document.body.style.cursor = 'pointer';//游標變化
-                            });
-                            /*
-                             * check if animal is in the right spot and
-                             * snap into place if it is
-                             */
-                            part.on('dragend', function () {
-                                var home = paths[privKey]
-
-                                if (!part.inRightPlace && isNearOutline(part, home.ex, home.ey)) {
-
-                                    part.position({
-                                        x: home.ex,
-                                        y: home.ey
-                                    });
-                                    part2.position({
-                                        x: home.ex,
-                                        y: home.ey
-                                    });
-                                    panzerLayer.draw();
-                                    finalposition.draw();
-                                    part.inRightPlace = true;
-                                    // disable drag and drop
-                                    setTimeout(function () {
-                                        part.draggable(false);
-                                        part.hide();
-                                        part2.hide();
-                                        //finalposition.hide(); 藏整層黑色layer
-                                        panzerLayer.draw();
-                                        finalposition.draw();
-                                    }, 50);
-
-                                    if (++score >= 6) {
-                                        var x = document.getElementById("pass4");
-                                        x.play();
-                                        var text1 = '完成FT-17!!'
-                                        drawBackground(background, images.background, text1);
-                                    } else {
-
-                                        var x = document.getElementById("pass1");
-                                        x.play();
-                                    }
-
-
-                                }
-                            });
-                            panzerLayer.add(part); part.setZIndex(50);
-                        }
-                        setpart()
-
-
-                    }
-
-                    stage.add(background); //順序關係圖層高度 上面比較後面
-                    stage.add(finalposition);
-                    stage.add(panzerLayer);
-                    stage.add(retry);
-
-                    drawBackground(
-                        background,
-                        images[bkimage],
-                        '移動零件完成雷諾FT-17吧!'
-                    );
-                }
-
-            </script>
-
+                   <p> <h3>如此嘗試後就可以填洞了，剩下就是重新畫過我自己要的圖，抓我最後要顯示的座標。在測試時發現老師的程式碼沒有限制位置，物件可以跑出頁框外就再也回不來，所以加上了限制範圍。另外還發現背景圖是用疊的，再拼完後疊了第二張圖上去。
+                    </h3></p>
+                </div>
+            </div>
         </div>
-
     </div>
+    <script>
+        var bkimage = "background"
+        var parts = ["rsuspension", "tail", "chassis", "turret", "lsuspension", "flag"]  //檔名
+
+
+        var paths = {
+
+            rsuspension: { sx: 5, sy: 200, ex: 534, ey: 250 },   //這邊順序會影響最後圖層順序
+            tail: { sx: 400, sy: 70, ex: 950, ey: 192 },
+            chassis: { sx: 200, sy: 70, ex: 600, ey: 175 },
+            turret: { sx: 10, sy: 70, ex: 665, ey: 108 },
+            lsuspension: { sx: 90, sy: 70, ex: 669, ey: 273 },
+            flag: { sx: 90, sy: 70, ex: 792, ey: 25 },
+        }
+        var loadedImages = 0;
+
+        loadImages(bkimage, parts, initStage)
+
+        function loadImages(bgimg, fgimgs, callback) {
+            var assetDir = 'FT-17/';                        //資料夾路徑
+            var variants = ["", "_black", "_glow"];         //後綴
+            var images = {};
+            var sources = [bgimg]
+            for (var i = 0; i < fgimgs.length; i++) {
+                for (var j = 0; j < variants.length; j++) {
+                    sources.push(fgimgs[i] + variants[j])
+                }
+            }
+            var numImages = sources.length;
+            for (var i = 0; i < sources.length; i++) {
+                var src = sources[i]
+                images[src] = new Image();
+                images[src].src = assetDir + src + ".png";
+                images[src].onload = function () {
+                    if (++loadedImages >= numImages) {
+                        callback(images);
+                    }
+                };
+            }
+        }
+
+        function drawBackground(background, bgImg, text) {
+            var context = background.getContext();
+            context.drawImage(bgImg, 0, 0);   //背景圖片座標
+            context.setAttr('font', '40pt Arial');  //改字體大小
+            context.setAttr('textAlign', 'center');//改位置
+            context.setAttr('fillStyle', 'LightSeaGreen');//改樣式顏色
+            context.fillText(text, background.getStage().width() / 2, 70);//改寬度高度
+        }
+        function isNearOutline(part, ex, ey) {
+            var a = part;                         //吸引
+            var ax = a.x();
+            var ay = a.y();
+            //吸引
+            if (ax > ex - 25
+                && ax < ex + 25
+                && ay > ey - 25 && ay < ey + 25) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+
+        function initStage(images) {
+            var score = 0;
+            var stage = new Konva.Stage({
+                container: 'container',
+                width: 1100,                 //遊戲頁框大小
+                height: 520
+            });
+            var background = new Konva.Layer();                 //圖層
+            var panzerLayer = new Konva.Layer();
+            var finalposition = new Konva.Layer();
+            var result = new Konva.Layer();
+
+            for (var key in paths) { // key = monkey, lion, ...
+                var setpart = function () {
+                    var part = new Konva.Image({                //放置物體程式部分
+                        image: images[key],
+                        x: paths[key].sx,
+                        y: paths[key].sy,
+                        draggable: true,
+                        dragBoundFunc: function (pos) {
+
+                            var newX;
+                            if (pos.x < 0) { newX = 0; }                   //限制物件移動的範圍
+                            else if (pos.x > 1000) { newX = 1000; }
+                            else { newX = pos.x; }
+                            var newY;
+                            if (pos.y < 0) { newY = 0; }
+                            else if (pos.y > 450) { newY = 450; }
+                            else { newY = pos.y; }
+                            return {
+                                x: newX,
+                                y: newY
+                            };
+                        }
+                    });
+
+                    var part2 = new Konva.Image({
+                        image: images[key + "_black"],
+                        x: paths[key].ex,
+                        y: paths[key].ey,
+                    });
+                    finalposition.add(part2);
+                    part2.setZIndex(0);
+
+
+                    var privKey = key
+                    part.on('mouseover', function () {
+                        if (part.draggable() != false) {
+                            part.image(images[privKey + '_glow']);//滑鼠在物件上
+                            panzerLayer.draw();
+                            document.body.style.cursor = 'pointer';//游標變化
+                        } else {
+                            part.image(images[privKey]);//滑鼠在物件上
+                            panzerLayer.draw();
+                            document.body.style.cursor = 'default';//游標變化
+                        }
+
+                    });
+                    // return animal on mouseout
+                    part.on('mouseout', function () {//滑鼠移開物件
+
+                        if (part.draggable() != false) {
+                            part.image(images[privKey]);
+                            panzerLayer.draw();
+                            document.body.style.cursor = 'default';//游標變化
+                        } else {
+                            part.image(images[privKey + '_glow']);
+                            panzerLayer.draw();
+                            document.body.style.cursor = 'default';//游標變化
+                        }
+                    });
+                    part.on('dragstart', function () {
+                        this.moveToTop();
+                        panzerLayer.draw();
+                    });
+                    part.on('dragmove', function () {
+                        document.body.style.cursor = 'pointer';//游標變化
+
+
+                    });
+                    /*
+                     * check if animal is in the right spot and
+                     * snap into place if it is
+                     */
+                    part.on('dragend', function () {
+                        var home = paths[privKey]
+
+                        if (!part.inRightPlace && isNearOutline(part, home.ex, home.ey)) {
+
+                            part.position({
+                                x: home.ex,
+                                y: home.ey
+                            });
+                            part2.position({
+                                x: home.ex,
+                                y: home.ey
+                            });
+                            panzerLayer.draw();
+                            finalposition.draw();
+                            part.inRightPlace = true;
+                            // disable drag and drop
+                            setTimeout(function () {
+                                part.draggable(false);
+                                part.hide();
+                                part2.hide();
+                                //finalposition.hide(); 藏整層黑色layer
+                                panzerLayer.draw();
+                                finalposition.draw();
+                            }, 50);
+
+                            if (++score >= 6) {
+                                var x = document.getElementById("pass4");
+                                x.play();
+                                var text1 = '完成FT-17!!'
+                                drawBackground(background, images.background, text1);
+                            } else {
+                                if (score == 1) {
+                                    var text2 = '還有5個'
+                                    drawBackground(background, images.background, text2);
+                                }
+                                else if (score == 2) {
+                                    var text2 = '還有4個'
+                                    drawBackground(background, images.background, text2);
+                                }
+                                else if (score == 3) {
+                                    var text2 = '還有3個'
+                                    drawBackground(background, images.background, text2);
+                                }
+                                else if (score == 4) {
+                                    var text2 = '還有2個'
+                                    drawBackground(background, images.background, text2);
+                                }
+                                else if (score == 5) {
+                                    var text2 = '還有1個'
+                                    drawBackground(background, images.background, text2);
+                                }
+
+                                var x = document.getElementById("pass1");
+                                x.play();
+                            }
+
+
+                        }
+                    });
+                    panzerLayer.add(part); part.setZIndex(50);
+                }
+                setpart()
+
+
+            }
+
+            stage.add(background); //順序關係圖層高度 上面比較後面
+            stage.add(finalposition);
+            stage.add(panzerLayer);
+            stage.add(result);
+
+            drawBackground(
+                background,
+                images[bkimage],
+                '移動零件完成雷諾FT-17吧!'
+            );
+        }
+
+    </script>
+
+</div>
+
+</div>
 
 
 </div>
@@ -439,26 +499,22 @@
         margin: 0 auto;
         float: none;
     }
-</style>
-<style>
+
     .bgo {
         background: rgba(204, 203, 203, 0.6);
         margin-bottom: 10px;
     }
-</style>
-<style>
+
     .bgoo {
         background: rgba(255, 255, 255, 0.473);
         margin-bottom: 10px;
     }
-</style>
-<style>
+
     .bhg {
         background: rgba(15, 15, 12, 0.6);
         margin-bottom: 10px;
     }
-</style>
-<style>
+
     .bh1 {
         background: rgba(15, 15, 12, 0.0);
         margin-bottom: 10px;
