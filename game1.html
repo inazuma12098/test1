@@ -188,9 +188,9 @@
                         height: 520
                     });
                     var background = new Konva.Layer();
-                    var animalLayer = new Konva.Layer();
-                    var animalhome = new Konva.Layer();
-                    var final = new Konva.Layer();
+                    var panzerLayer = new Konva.Layer();
+                    var finalposition = new Konva.Layer();
+                    var retry = new Konva.Layer();
         
                     for (var key in paths) { // key = monkey, lion, ...
                         var setAnimal = function () {
@@ -206,29 +206,19 @@
                                 x: paths[key].ex,
                                 y: paths[key].ey,
                             });
-                            animalhome.add(animal2);
+                            finalposition.add(animal2);
                             animal2.setZIndex(0);
 
-                           
-                            var final1 = new Konva.Image({
-                                image: images[key],
-                                x: paths[key].ex,
-                                y: paths[key].ey,
-                                draggable: false
-                            });
-                            final.add(final1);
-                            
-                        
         
                             var privKey = key
                             animal.on('mouseover', function () {
                                 if (animal.draggable() != false) {
                                     animal.image(images[privKey + '_glow']);//滑鼠在物件上
-                                    animalLayer.draw();
+                                    panzerLayer.draw();
                                     document.body.style.cursor = 'pointer';//游標變化
                                 } else {
                                     animal.image(images[privKey]);//滑鼠在物件上
-                                    animalLayer.draw();
+                                    panzerLayer.draw();
                                     document.body.style.cursor = 'default';//游標變化
                                 }
         
@@ -238,17 +228,17 @@
         
                                 if (animal.draggable() != false) {
                                     animal.image(images[privKey]);
-                                    animalLayer.draw();
+                                    panzerLayer.draw();
                                     document.body.style.cursor = 'default';//游標變化
                                 } else {
                                     animal.image(images[privKey + '_glow']);
-                                    animalLayer.draw();
+                                    panzerLayer.draw();
                                     document.body.style.cursor = 'default';//游標變化
                                 }
                             });
                             animal.on('dragstart', function () {
                                 this.moveToTop();
-                                animalLayer.draw();
+                                panzerLayer.draw();
                             });
                             animal.on('dragmove', function () {
                                 document.body.style.cursor = 'pointer';//游標變化
@@ -270,17 +260,17 @@
                                         x: home.ex,
                                         y: home.ey
                                     });
-                                    animalLayer.draw();
-                                    animalhome.draw();
+                                    panzerLayer.draw();
+                                   finalposition.draw();
                                     animal.inRightPlace = true;
                                     // disable drag and drop
                                     setTimeout(function () {
                                         animal.draggable(false);
                                         animal.hide();
                                         animal2.hide();
-                                        //animalhome.hide(); 藏整層黑色layer
-                                        animalLayer.draw();
-                                        animalhome.draw();
+                                        //finalposition.hide(); 藏整層黑色layer
+                                        panzerLayer.draw();
+                                        finalposition.draw();
                                     }, 50);
         
                                     if (++score >= 5) {
@@ -297,7 +287,7 @@
         
                                 }
                             });
-                            animalLayer.add(animal); animal.setZIndex(50);
+                            panzerLayer.add(animal); animal.setZIndex(50);
                         }
                         setAnimal()
         
@@ -305,9 +295,9 @@
                     }
         
                     stage.add(background); //順序關係圖層高度 上面比較後面
-                    stage.add(final);
-                    stage.add(animalhome);
-                    stage.add(animalLayer);
+                    stage.add(finalposition);
+                    stage.add(panzerLayer);
+                    stage.add(retry);
         
                     drawBackground(
                         background,
