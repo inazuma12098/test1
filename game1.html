@@ -19,7 +19,7 @@
     <meta content="這是呂巍君的個人網站，裡面放了大學四年的作品" name="description" />
     <meta content="りゅうおう" name="author= ＲＹＵＯＵ" />
     <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
-   
+
     <link href="vendor/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="css/animate.css" rel="stylesheet">
@@ -120,21 +120,21 @@
             <script>
                 var bkimage = "beach"
                 var animals = ["rsuspension", "tail", "chassis", "turret", "lsuspension"]
-        
-        
+
+
                 var paths = {
-        
+
                     rsuspension: { sx: 5, sy: 200, ex: 630, ey: 235 },   //這邊順序會影響最後圖層順序
                     tail: { sx: 400, sy: 70, ex: 952, ey: 192 },
                     chassis: { sx: 200, sy: 70, ex: 675, ey: 185 },
                     turret: { sx: 10, sy: 70, ex: 740, ey: 135 },
                     lsuspension: { sx: 90, sy: 70, ex: 730, ey: 270 },
-        
+
                 }
                 var loadedImages = 0;
-        
+
                 loadImages(bkimage, animals, initStage)
-        
+
                 function loadImages(bgimg, fgimgs, callback) {
                     var assetDir = 'assets/';
                     var variants = ["", "_black", "_glow"];
@@ -157,7 +157,7 @@
                         };
                     }
                 }
-        
+
                 function drawBackground(background, bgImg, text) {
                     var context = background.getContext();
                     context.drawImage(bgImg, 0, 0);   //背景圖片座標
@@ -179,8 +179,8 @@
                         return false;
                     }
                 }
-        
-        
+
+
                 function initStage(images) {
                     var score = 0;
                     var stage = new Konva.Stage({
@@ -192,7 +192,7 @@
                     var panzerLayer = new Konva.Layer();
                     var finalposition = new Konva.Layer();
                     var retry = new Konva.Layer();
-        
+
                     for (var key in paths) { // key = monkey, lion, ...
                         var setAnimal = function () {
                             var animal = new Konva.Image({
@@ -210,7 +210,7 @@
                             finalposition.add(animal2);
                             animal2.setZIndex(0);
 
-        
+
                             var privKey = key
                             animal.on('mouseover', function () {
                                 if (animal.draggable() != false) {
@@ -222,11 +222,11 @@
                                     panzerLayer.draw();
                                     document.body.style.cursor = 'default';//游標變化
                                 }
-        
+
                             });
                             // return animal on mouseout
                             animal.on('mouseout', function () {//滑鼠移開物件
-        
+
                                 if (animal.draggable() != false) {
                                     animal.image(images[privKey]);
                                     panzerLayer.draw();
@@ -250,9 +250,9 @@
                              */
                             animal.on('dragend', function () {
                                 var home = paths[privKey]
-        
+
                                 if (!animal.inRightPlace && isNearOutline(animal, home.ex, home.ey)) {
-                                    
+
                                     animal.position({
                                         x: home.ex,
                                         y: home.ey
@@ -262,7 +262,7 @@
                                         y: home.ey
                                     });
                                     panzerLayer.draw();
-                                   finalposition.draw();
+                                    finalposition.draw();
                                     animal.inRightPlace = true;
                                     // disable drag and drop
                                     setTimeout(function () {
@@ -273,40 +273,40 @@
                                         panzerLayer.draw();
                                         finalposition.draw();
                                     }, 50);
-        
+
                                     if (++score >= 5) {
                                         var x = document.getElementById("pass4");
                                         x.play();
                                         var text1 = '完成FT-17!!'
                                         drawBackground(background, images.beach, text1);
                                     } else {
-        
+
                                         var x = document.getElementById("pass1");
                                         x.play();
                                     }
-        
-        
+
+
                                 }
                             });
                             panzerLayer.add(animal); animal.setZIndex(50);
                         }
                         setAnimal()
-        
-                       
+
+
                     }
-        
+
                     stage.add(background); //順序關係圖層高度 上面比較後面
                     stage.add(finalposition);
                     stage.add(panzerLayer);
                     stage.add(retry);
-        
+
                     drawBackground(
                         background,
                         images[bkimage],
                         '移動零件完成雷諾FT-17吧!'
                     );
                 }
-        
+
             </script>
 
         </div>
