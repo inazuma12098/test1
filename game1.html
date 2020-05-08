@@ -118,16 +118,16 @@
             </audio>
             <script>
                 var bkimage = "beach"
-                var animals = ["monkey", "lion", "giraffe", "snake", "panzer"]
+                var animals = ["rsuspension", "tail", "chassis", "turret", "lsuspension"]
         
         
                 var paths = {
         
-                    monkey: { sx: 5, sy: 200, ex: 260, ey: 420 },   //這邊順序會影響最後圖層順序
-                    lion: { sx: 400, sy: 70, ex: 255, ey: 330 },
-                    giraffe: { sx: 200, sy: 70, ex: 250, ey: 250 },
-                    snake: { sx: 10, sy: 70, ex: 275, ey: 320 },
-                    panzer: { sx: 90, sy: 70, ex: 265, ey: 330 },
+                    rsuspension: { sx: 5, sy: 200, ex: 630, ey: 235 },   //這邊順序會影響最後圖層順序
+                    tail: { sx: 400, sy: 70, ex: 952, ey: 192 },
+                    chassis: { sx: 200, sy: 70, ex: 675, ey: 185 },
+                    turret: { sx: 10, sy: 70, ex: 740, ey: 135 },
+                    lsuspension: { sx: 90, sy: 70, ex: 730, ey: 270 },
         
                 }
                 var loadedImages = 0;
@@ -286,7 +286,7 @@
                                     if (++score >= 5) {
                                         var x = document.getElementById("pass4");
                                         x.play();
-                                        var text1 = '全部拼完了'
+                                        var text1 = '完成FT-17!!'
                                         drawBackground(background, images.beach, text1);
                                     } else {
         
@@ -312,7 +312,7 @@
                     drawBackground(
                         background,
                         images[bkimage],
-                        '移動吧!'
+                        '移動零件完成雷諾FT-17吧!'
                     );
                 }
         
