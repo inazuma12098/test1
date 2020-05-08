@@ -13,7 +13,7 @@
 <head>
     <script src="https://unpkg.com/konva@4.2.2/konva.min.js"></script>
     <meta charset="utf-8" />
-    <title>りゅうおうR/C工房--遊戲頁面</title>
+    <title>りゅうおうR/C工房--拼圖遊戲頁面</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="這是呂巍君的個人網站，裡面放了大學四年的作品" name="description" />
@@ -118,25 +118,25 @@
 
             </audio>
             <script>
-                var bkimage = "beach"
-                var animals = ["rsuspension", "tail", "chassis", "turret", "lsuspension"]
+                var bkimage = "background"
+                var parts = ["rsuspension", "tail", "chassis", "turret", "lsuspension","flag"]
 
 
                 var paths = {
 
-                    rsuspension: { sx: 5, sy: 200, ex: 630, ey: 235 },   //這邊順序會影響最後圖層順序
-                    tail: { sx: 400, sy: 70, ex: 952, ey: 192 },
-                    chassis: { sx: 200, sy: 70, ex: 675, ey: 185 },
-                    turret: { sx: 10, sy: 70, ex: 740, ey: 135 },
-                    lsuspension: { sx: 90, sy: 70, ex: 730, ey: 270 },
-
+                    rsuspension: { sx: 5, sy: 200, ex: 534, ey: 250 },   //這邊順序會影響最後圖層順序
+                    tail: { sx: 400, sy: 70, ex: 950, ey: 192 },
+                    chassis: { sx: 200, sy: 70, ex: 600, ey: 175 },
+                    turret: { sx: 10, sy: 70, ex: 665, ey: 108 },
+                    lsuspension: { sx: 90, sy: 70, ex: 669, ey: 273 },
+                    flag: { sx: 90, sy: 70, ex: 792, ey: 25 },
                 }
                 var loadedImages = 0;
 
-                loadImages(bkimage, animals, initStage)
+                loadImages(bkimage, parts, initStage)
 
                 function loadImages(bgimg, fgimgs, callback) {
-                    var assetDir = 'assets/';
+                    var assetDir = 'FT-17/';
                     var variants = ["", "_black", "_glow"];
                     var images = {};
                     var sources = [bgimg]
@@ -166,8 +166,8 @@
                     context.setAttr('fillStyle', 'LightSeaGreen');//改樣式顏色
                     context.fillText(text, background.getStage().width() / 2, 70);//改寬度高度
                 }
-                function isNearOutline(animal, ex, ey) {
-                    var a = animal;                         //吸引
+                function isNearOutline(part, ex, ey) {
+                    var a = part;                         //吸引
                     var ax = a.x();
                     var ay = a.y();
                     //吸引
@@ -194,91 +194,91 @@
                     var retry = new Konva.Layer();
 
                     for (var key in paths) { // key = monkey, lion, ...
-                        var setAnimal = function () {
-                            var animal = new Konva.Image({
+                        var setpart = function () {
+                            var part = new Konva.Image({
                                 image: images[key],
                                 x: paths[key].sx,
                                 y: paths[key].sy,
                                 draggable: true
                             });
 
-                            var animal2 = new Konva.Image({
+                            var part2 = new Konva.Image({
                                 image: images[key + "_black"],
                                 x: paths[key].ex,
                                 y: paths[key].ey,
                             });
-                            finalposition.add(animal2);
-                            animal2.setZIndex(0);
+                            finalposition.add(part2);
+                             part2.setZIndex(0);
 
 
                             var privKey = key
-                            animal.on('mouseover', function () {
-                                if (animal.draggable() != false) {
-                                    animal.image(images[privKey + '_glow']);//滑鼠在物件上
+                            part.on('mouseover', function () {
+                                if (part.draggable() != false) {
+                                   part.image(images[privKey + '_glow']);//滑鼠在物件上
                                     panzerLayer.draw();
                                     document.body.style.cursor = 'pointer';//游標變化
                                 } else {
-                                    animal.image(images[privKey]);//滑鼠在物件上
+                                    part.image(images[privKey]);//滑鼠在物件上
                                     panzerLayer.draw();
                                     document.body.style.cursor = 'default';//游標變化
                                 }
 
                             });
                             // return animal on mouseout
-                            animal.on('mouseout', function () {//滑鼠移開物件
+                            part.on('mouseout', function () {//滑鼠移開物件
 
-                                if (animal.draggable() != false) {
-                                    animal.image(images[privKey]);
+                                if (part.draggable() != false) {
+                                    part.image(images[privKey]);
                                     panzerLayer.draw();
                                     document.body.style.cursor = 'default';//游標變化
                                 } else {
-                                    animal.image(images[privKey + '_glow']);
+                                    part.image(images[privKey + '_glow']);
                                     panzerLayer.draw();
                                     document.body.style.cursor = 'default';//游標變化
                                 }
                             });
-                            animal.on('dragstart', function () {
+                            part.on('dragstart', function () {
                                 this.moveToTop();
                                 panzerLayer.draw();
                             });
-                            animal.on('dragmove', function () {
+                           part.on('dragmove', function () {
                                 document.body.style.cursor = 'pointer';//游標變化
                             });
                             /*
                              * check if animal is in the right spot and
                              * snap into place if it is
                              */
-                            animal.on('dragend', function () {
+                            part.on('dragend', function () {
                                 var home = paths[privKey]
 
-                                if (!animal.inRightPlace && isNearOutline(animal, home.ex, home.ey)) {
+                                if (!part.inRightPlace && isNearOutline(part, home.ex, home.ey)) {
 
-                                    animal.position({
+                                    part.position({
                                         x: home.ex,
                                         y: home.ey
                                     });
-                                    animal2.position({
+                                    part2.position({
                                         x: home.ex,
                                         y: home.ey
                                     });
                                     panzerLayer.draw();
                                     finalposition.draw();
-                                    animal.inRightPlace = true;
+                                    part.inRightPlace = true;
                                     // disable drag and drop
                                     setTimeout(function () {
-                                        animal.draggable(false);
-                                        animal.hide();
-                                        animal2.hide();
+                                        part.draggable(false);
+                                        part.hide();
+                                        part2.hide();
                                         //finalposition.hide(); 藏整層黑色layer
                                         panzerLayer.draw();
                                         finalposition.draw();
                                     }, 50);
 
-                                    if (++score >= 5) {
+                                    if (++score >= 6) {
                                         var x = document.getElementById("pass4");
                                         x.play();
                                         var text1 = '完成FT-17!!'
-                                        drawBackground(background, images.beach, text1);
+                                        drawBackground(background, images.background, text1);
                                     } else {
 
                                         var x = document.getElementById("pass1");
@@ -288,9 +288,9 @@
 
                                 }
                             });
-                            panzerLayer.add(animal); animal.setZIndex(50);
+                            panzerLayer.add(part); part.setZIndex(50);
                         }
-                        setAnimal()
+                        setpart()
 
 
                     }
