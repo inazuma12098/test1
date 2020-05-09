@@ -110,16 +110,23 @@
             <hr style="width: 100%; height: 4px ;border: none; background-color: rgba(116, 116, 116, 0.685);">
             <div class="col-sm-2"></div>
             <div class="col-sm-5">
-            <h3 style="color: cornflowerblue;"><a href="javascript:window.location.reload()">重新整理</a></h3></div>
-            <div class = "col-sm-3"> <h3 style="color: cornflowerblue;"><a href="networks.html">回學習成品列表</a></h3></div> 
+                <h3 style="color: cornflowerblue;"><a href="javascript:window.location.reload()">重新整理</a></h3>
+            </div>
+            <div class="col-sm-3">
+                <h3 style="color: cornflowerblue;"><a href="networks.html">回學習成品列表</a></h3>
+            </div>
             <div class="col-sm-2"></div>
             <hr style="width: 100%; height: 4px ;border: none; background-color: rgba(116, 116, 116, 0.685);">
-            <a href="https://soundeffect-lab.info" target="_blank"><h2>聲音素材來源:<h3>効果音ラボ<h6>フリー、商用無料、報告不用の効果音素材をダウンロード</h6></h3></h2></a>
+            <a href="https://soundeffect-lab.info" target="_blank">
+                <h2>聲音素材來源:<h3>効果音ラボ<h6>フリー、商用無料、報告不用の効果音素材をダウンロード</h6>
+                    </h3>
+                </h2>
+            </a>
             <audio id="pass">
                 <source src="FT-17/クリック.mp3" type="audio/mpeg">
 
             </audio>
-     
+
 
             </audio>
             <audio id="passfinal">
@@ -130,38 +137,60 @@
             <div id="notes">
                 <div class="container row col-md-12 margin-b-40 bgo ">
                     <h2>學習心得</h2>
-                </div> 
+                </div>
                 <div class="container row col-md-12 margin-b-40">
-                   <p></p> <h3>這次所做的小遊戲是個類似拼圖的遊戲，因為這個構想，我就想說做類似立體的拼圖。但這樣一來遇到了問題，要立體的話就會有前後，但在經過測試，後放的物件必定在上面，因為移動時movetoTop了。
-                    </h3></p>
+                    <p></p>
+                    <h3>這次所做的小遊戲是個類似拼圖的遊戲，因為這個構想，我就想說做類似立體的拼圖。但這樣一來遇到了問題，要立體的話就會有前後，但在經過測試，後放的物件必定在上面，因為移動時movetoTop了。
+                    </h3>
+                    </p>
 
-                  <p>  <h3>於是想說改變物件屬性，但我不知道如何把單一個叫出來改就作罷。乾脆用填洞的方式來讓最下層的圖片顯示出來，但是了很久都只能讓移動的hide，黑洞卻無法hide。後來突然想到既然同檔名，那就分兩個部分讓程式找到檔名一致的藏起來就可以了。
-                    </h3></p>
+                    <p>
+                    <h3>於是想說改變物件屬性，但我不知道如何把單一個叫出來改就作罷。乾脆用填洞的方式來讓最下層的圖片顯示出來，但是了很久都只能讓移動的hide，黑洞卻無法hide。後來突然想到既然同檔名，那就分兩個部分讓程式找到檔名一致的藏起來就可以了。
+                    </h3>
+                    </p>
 
-                   <p> <h3>如此嘗試後就可以填洞了，剩下就是重新畫過我自己要的圖，抓我最後要顯示的座標。在測試時發現老師的程式碼沒有限制位置，物件可以跑出頁框外就再也回不來，所以加上了限制範圍。另外還發現背景圖是用疊的，再拼完後疊了第二張圖上去。
-                    </h3></p>
-                    <p><h3>在素材的使用上，圖是我自己畫的，而聲音音檔來源為：<a href="https://soundeffect-lab.info" target="_blank">効果音ラボ</a>。</h3></p>
+                    <p>
+                    <h3>如此嘗試後就可以填洞了，剩下就是重新畫過我自己要的圖，抓我最後要顯示的座標。在測試時發現老師的程式碼沒有限制位置，物件可以跑出頁框外就再也回不來，所以加上了限制範圍。另外還發現背景圖是用疊的，再拼完後疊了第二張圖上去。
+                    </h3>
+                    </p>
+                    <p>
+                    <h3>在素材的使用上，圖是我自己畫的，而聲音音檔來源為：<a href="https://soundeffect-lab.info" target="_blank">効果音ラボ</a>。</h3>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        var bkimage = "background"
+        var bkimage = ["background"]
+
         var parts = ["rsuspension", "tail", "chassis", "turret", "lsuspension", "flag"]  //檔名
 
 
         var paths = {
 
-            rsuspension: { sx: 5, sy: 200, ex: 534, ey: 250 },   //這邊順序會影響最後圖層順序
-            tail: { sx: 400, sy: 150, ex: 950, ey: 192 },
-            chassis: { sx: 100, sy: 260, ex: 600, ey: 175 },
-            turret: { sx: 10, sy: 170, ex: 665, ey: 108 },
-            lsuspension: { sx: 90, sy: 100, ex: 669, ey: 273 },
-            flag: { sx: 90, sy: 190, ex: 792, ey: 25 },
+            rsuspension: {ex: 534, ey: 250 },   //這邊順序會影響一開始圖層順序
+            tail: {ex: 950, ey: 192 },
+            chassis: {ex: 600, ey: 175 },
+            turret: { ex: 665, ey: 108 },
+            lsuspension: {ex: 669, ey: 273 },
+            flag: {ex: 792, ey: 25 },
         }
         var loadedImages = 0;
 
+        function getRandomX(min, max) {
+            min = 0;
+            max=300;
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        };
+
+        function getRandomY(min, max) {
+            min = 50;
+            max=260;
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        };
+
         loadImages(bkimage, parts, initStage)
+
 
         function loadImages(bgimg, fgimgs, callback) {
             var assetDir = 'FT-17/';                        //資料夾路徑
@@ -192,7 +221,7 @@
             context.setAttr('font', '40pt Impact');  //改字體大小
             context.setAttr('textAlign', 'center');//改位置
             context.setAttr('fillStyle', 'White');//改樣式顏色
-            context.fillText(text, background.getStage().width() /7, 70);//改寬度高度
+            context.fillText(text, background.getStage().width() / 7, 70);//改寬度高度
         }
         function isNearOutline(part, ex, ey) {
             var a = part;                         //吸引
@@ -226,18 +255,22 @@
                 var setpart = function () {
                     var part = new Konva.Image({                //放置物體程式部分
                         image: images[key],
-                        x: paths[key].sx,
-                        y: paths[key].sy,
+                        x: getRandomX(),
+                        y: getRandomY(),
+
                         draggable: true,
+
+
+
                         dragBoundFunc: function (pos) {
 
                             var newX;
-                            if (pos.x < 0) { newX = 0; }                   //限制物件移動的範圍
-                            else if (pos.x > 1000) { newX = 1000; }
+                            if (pos.x < 0) { newX = 0; }                   //限制物件移動的範圍(不會超出邊界)
+                            else if (pos.x + part.width() > 1100) { newX = 1100 - part.width(); }
                             else { newX = pos.x; }
                             var newY;
                             if (pos.y < 0) { newY = 0; }
-                            else if (pos.y > 450) { newY = 450; }
+                            else if (pos.y + part.height() > 520) { newY = 520 - part.height(); }
                             else { newY = pos.y; }
                             return {
                                 x: newX,
@@ -316,29 +349,35 @@
                                 x.play();
                                 var text1 = 'FT-17完成!!'
                                 drawBackground(background, images.background, text1);
-                            } else {var x;
-                                if (score == 1) { x= document.getElementById("pass");
+                            } else {
+                                var x;
+                                if (score == 1) {
+                                    x = document.getElementById("pass");
                                     var text2 = '還有5個零件'
                                     drawBackground(background, images.background, text2);
                                 }
-                                else if (score == 2) {x= document.getElementById("pass");
+                                else if (score == 2) {
+                                    x = document.getElementById("pass");
                                     var text2 = '還有4個零件'
                                     drawBackground(background, images.background, text2);
                                 }
-                                else if (score == 3) {x= document.getElementById("pass");
+                                else if (score == 3) {
+                                    x = document.getElementById("pass");
                                     var text2 = '還有3個零件'
                                     drawBackground(background, images.background, text2);
                                 }
-                                else if (score == 4) {x= document.getElementById("pass");
+                                else if (score == 4) {
+                                    x = document.getElementById("pass");
                                     var text2 = '還有2個零件'
                                     drawBackground(background, images.background, text2);
                                 }
-                                else if (score == 5) {x= document.getElementById("pass");
+                                else if (score == 5) {
+                                    x = document.getElementById("pass");
                                     var text2 = '還有1個零件'
                                     drawBackground(background, images.background, text2);
                                 }
 
-                                
+
                                 x.play();
                             }
                             setTimeout(function () {
@@ -350,7 +389,7 @@
                                 finalposition.draw();
                             }, 50);
 
-                            
+
 
 
                         }
